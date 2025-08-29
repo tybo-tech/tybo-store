@@ -1,5 +1,6 @@
 export * from './endpoint';
 export * from './base-api.service';
+export * from './context.service';
 export * from './category.service';
 export * from './product.service';
 export * from './user.service';

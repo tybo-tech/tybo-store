@@ -1,7 +1,7 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { WebsiteService } from '../../services';
+import { WebsiteService, ContextService } from '../../services';
 import { WebsitePageData, PageSection } from '../../models';
 
 @Component({
@@ -424,6 +424,7 @@ import { WebsitePageData, PageSection } from '../../models';
 })
 export class EditorLayoutComponent implements OnInit {
   private readonly websiteService = inject(WebsiteService);
+  private readonly contextService = inject(ContextService);
 
   readonly loading = signal<boolean>(false);
   readonly saving = signal<boolean>(false);
@@ -441,7 +442,8 @@ export class EditorLayoutComponent implements OnInit {
   loadPageData(): void {
     this.loading.set(true);
 
-    this.websiteService.getHomePageData(2).subscribe({
+    // Use the new context-aware method to load home page data
+    this.websiteService.getPageData('home').subscribe({
       next: (data: WebsitePageData[]) => {
         if (data && data.length > 0) {
           const homePageData = data[0];

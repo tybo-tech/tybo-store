@@ -37,6 +37,11 @@ export interface PageElement {
   tag: string;
   value?: string;
   link?: string;
+  href?: string;
+  src?: string;
+  alt?: string;
+  placeholder?: string;
+  type?: string;
   styles: ResponsiveStyles;
   children?: PageElement[];
   content?: any[];

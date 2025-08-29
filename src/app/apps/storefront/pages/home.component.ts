@@ -1,11 +1,13 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WebsiteService } from '../../../services';
+import { WebsiteService, ContextService } from '../../../services';
 import { WebsitePageData, PageSection } from '../../../models';
 import { HeroSliderComponent } from '../sections/hero-slider.component';
 import { NineGridCategoryComponent } from '../sections/nine-grid-category.component';
 import { FeatureIntroComponent } from '../sections/feature-intro.component';
 import { CategoryProductsComponent } from '../sections/category-products.component';
+import { CompanyInfoComponent } from '../../../components/company-info.component';
+// NOTE: DynamicElementComponent imports section components, avoiding circular dependency
 
 @Component({
   selector: 'app-storefront-home',
@@ -14,10 +16,14 @@ import { CategoryProductsComponent } from '../sections/category-products.compone
     HeroSliderComponent,
     NineGridCategoryComponent,
     FeatureIntroComponent,
-    CategoryProductsComponent
+    CategoryProductsComponent,
+    CompanyInfoComponent
   ],
   template: `
     <div class="storefront-home">
+      <!-- Company Context Information (for development) -->
+      <app-company-info></app-company-info>
+
       @if (loading()) {
         <div class="loading-container">
           <div class="loading-spinner"></div>
@@ -149,6 +155,7 @@ import { CategoryProductsComponent } from '../sections/category-products.compone
 })
 export class StorefrontHomeComponent implements OnInit {
   private readonly websiteService = inject(WebsiteService);
+  private readonly contextService = inject(ContextService);
 
   readonly loading = signal<boolean>(false);
   readonly error = signal<string | null>(null);
@@ -163,8 +170,9 @@ export class StorefrontHomeComponent implements OnInit {
     this.loading.set(true);
     this.error.set(null);
 
-    // Load home page data
-    this.websiteService.getHomePageData(2).subscribe({ // company_id: 2 from your example
+    // Load home page data using the new context-aware method
+    // parentId: 'home', collectionId: 'page' (default)
+    this.websiteService.getPageData('home').subscribe({
       next: (data: WebsitePageData[]) => {
         if (data && data.length > 0) {
           const homePageData = data[0];

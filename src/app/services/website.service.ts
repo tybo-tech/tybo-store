@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BaseApiService } from './base-api.service';
+import { ContextService } from './context.service';
 import {
   Website,
   WebsitePage,
@@ -14,6 +15,63 @@ import {
   providedIn: 'root'
 })
 export class WebsiteService extends BaseApiService {
+  private contextService = inject(ContextService);
+
+  // Page Management with Company Context
+  /**
+   * Get page data by parent ID for current company
+   * Uses the pattern: /collection-data/get-by-parent.php?parentId=home&collectionId=page&company_id=2
+   */
+  getPageData(parentId: string, collectionId: string = 'page'): Observable<WebsitePageData[]> {
+    const companyId = this.contextService.getCompanyId();
+    return this.get<WebsitePageData[]>('/collection-data/get-by-parent.php', {
+      parentId,
+      collectionId,
+      company_id: companyId
+    });
+  }
+
+  /**
+   * Get page data by parent ID with explicit company ID
+   */
+  getPageDataForCompany(parentId: string, companyId: number, collectionId: string = 'page'): Observable<WebsitePageData[]> {
+    return this.get<WebsitePageData[]>('/collection-data/get-by-parent.php', {
+      parentId,
+      collectionId,
+      company_id: companyId
+    });
+  }
+
+  /**
+   * Get page data by ID
+   */
+  getPageDataById(id: number): Observable<WebsitePageData> {
+    return this.get<WebsitePageData>('/collection-data/get.php', { id });
+  }
+
+  /**
+   * Save page data with company context
+   */
+  savePageData(pageData: Partial<WebsitePageData>): Observable<ApiResponse<WebsitePageData>> {
+    const companyId = this.contextService.getCompanyId();
+    const dataWithContext = {
+      ...pageData,
+      company_id: companyId
+    };
+    return this.post<ApiResponse<WebsitePageData>>('/collection-data/save.php', dataWithContext);
+  }
+
+  /**
+   * Create a new page with company context
+   */
+  createPage(page: Partial<WebsitePage>): Observable<ApiResponse<WebsitePage>> {
+    const companyId = this.contextService.getCompanyId();
+    const pageWithContext = {
+      ...page,
+      company_id: companyId
+    };
+    return this.post<ApiResponse<WebsitePage>>('/tybo/add-page.php', pageWithContext);
+  }
 
   // Website Management
   /**
@@ -27,7 +85,12 @@ export class WebsiteService extends BaseApiService {
    * Create a new website
    */
   createWebsite(website: Partial<Website>): Observable<ApiResponse<Website>> {
-    return this.post<ApiResponse<Website>>('/tybo/add-website.php', website);
+    const companyId = this.contextService.getCompanyId();
+    const websiteWithContext = {
+      ...website,
+      company_id: companyId
+    };
+    return this.post<ApiResponse<Website>>('/tybo/add-website.php', websiteWithContext);
   }
 
   /**
@@ -41,39 +104,12 @@ export class WebsiteService extends BaseApiService {
    * Initialize website
    */
   initializeWebsite(data: any): Observable<ApiResponse> {
-    return this.post<ApiResponse>('/tybo/init.php', data);
-  }
-
-  // Page Management
-  /**
-   * Get page data by collection and parent
-   */
-  getPageData(collection: string, parentId: string): Observable<WebsitePageData[]> {
-    return this.get<WebsitePageData[]>('/collection-data/list.php', {
-      collection,
-      parent_id: parentId
-    });
-  }
-
-  /**
-   * Get page data by ID
-   */
-  getPageDataById(id: number): Observable<WebsitePageData> {
-    return this.get<WebsitePageData>('/collection-data/get.php', { id });
-  }
-
-  /**
-   * Save page data
-   */
-  savePageData(pageData: Partial<WebsitePageData>): Observable<ApiResponse<WebsitePageData>> {
-    return this.post<ApiResponse<WebsitePageData>>('/collection-data/save.php', pageData);
-  }
-
-  /**
-   * Create a new page
-   */
-  createPage(page: Partial<WebsitePage>): Observable<ApiResponse<WebsitePage>> {
-    return this.post<ApiResponse<WebsitePage>>('/tybo/add-page.php', page);
+    const companyId = this.contextService.getCompanyId();
+    const dataWithContext = {
+      ...data,
+      company_id: companyId
+    };
+    return this.post<ApiResponse>('/tybo/init.php', dataWithContext);
   }
 
   /**
