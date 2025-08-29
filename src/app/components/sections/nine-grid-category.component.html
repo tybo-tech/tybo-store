@@ -1,0 +1,38 @@
+<section class="w-full px-3 sm:px-4 lg:px-5">
+  <div class="max-w-[1200px] mx-auto">
+    <div
+      class="{{ containerClass() }}"
+      [ngStyle]="autoRowsStyle()"
+    >
+      @for (cat of effectiveCategories(); track trackCat($index, cat)) {
+        <a
+          class="group relative overflow-hidden rounded-2xl bg-white shadow-md ring-1 ring-black/5 transition-all duration-300 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/40"
+          [ngClass]="tileSpanClass($index)"
+          [routerLink]="linkFor(cat)"
+          [queryParams]="queryFor(cat)"
+          [attr.aria-label]="cat.name"
+        >
+          <!-- Image -->
+          <div class="relative h-full w-full">
+            <img
+              [src]="cat.image_url"
+              [alt]="cat.name"
+              class="h-full w-full object-cover select-none"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70 group-hover:opacity-80 transition-opacity"></div>
+          </div>
+
+          <!-- Label bar -->
+          <div
+            class="pointer-events-none absolute inset-x-4 bottom-4 rounded-xl px-4 py-2 text-center font-semibold text-white shadow"
+            [style.background]="accentColor"
+          >
+            <span class="block truncate">{{ cat.name }}</span>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
+</section>

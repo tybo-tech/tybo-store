@@ -5,7 +5,7 @@ import { PageElement, PageSection } from '../models/website.interface';
 
 // Import section components
 import { FeatureIntroComponent } from '../apps/storefront/sections/feature-intro.component';
-import { NineGridCategoryComponent } from '../apps/storefront/sections/nine-grid-category.component';
+import { NineGridCategoryComponent } from './sections/nine-grid-category.component';
 import { CategoryProductsComponent } from '../apps/storefront/sections/category-products.component';
 import { HeroSliderComponent } from './sections/hero-slider-new.component';
 

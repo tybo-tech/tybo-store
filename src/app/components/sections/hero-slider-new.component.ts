@@ -1,4 +1,4 @@
-import { Component, Input, computed, signal, OnInit, OnDestroy, HostListener, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, computed, signal, OnInit, OnDestroy, HostListener, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PageSection, HeroSliderContent } from '../../models/website.interface';
@@ -17,7 +17,7 @@ export interface HeroSlide {
   imports: [CommonModule, RouterModule],
   templateUrl: './hero-slider.component.html'
 })
-export class HeroSliderComponent implements OnInit, OnDestroy {
+export class HeroSliderComponent implements OnInit, OnDestroy, OnChanges {
   /** Core section data from parent */
   @Input() section!: PageSection;
 
@@ -45,7 +45,12 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
   private isLoadingSignal = signal(true);
   private autoPlayEnabledSignal = signal(true);
   private hovering = false;
-  private timer: any;
+  private timer: ReturnType<typeof setInterval> | null = null;
+
+  // Reactive viewport width for responsive height calc
+  private screenWidth = signal<number>(
+    typeof window !== 'undefined' ? window.innerWidth : 1024
+  );
 
   // Touch support
   private touchStartX = 0;
@@ -70,8 +75,7 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
   autoPlayEnabled = computed(() => this.autoPlayEnabledSignal() && this.autoPlay);
 
   containerHeight = computed(() => {
-    if (typeof window === 'undefined') return this.height;
-    const width = window.innerWidth;
+    const width = this.screenWidth();
     if (width >= 1024) return this.height;
     if (width >= 640) return this.tabletHeight;
     return this.mobileHeight;
@@ -102,6 +106,22 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
     this.stop();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    // If slides source or autoplay toggled, reconcile autoplay and preload
+    if (changes['section']) {
+      this.currentSlideIndex.set(0);
+      this.preloadImages();
+    }
+    if (changes['autoPlay']) {
+      if (this.autoPlay && this.slides().length > 1) {
+        this.autoPlayEnabledSignal.set(true);
+        this.start();
+      } else {
+        this.stop();
+      }
+    }
+  }
+
   private start(): void {
     this.stop();
     this.timer = setInterval(() => {
@@ -112,9 +132,9 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
   }
 
   private stop(): void {
-    if (this.timer) {
+    if (this.timer !== null) {
       clearInterval(this.timer);
-      this.timer = undefined;
+      this.timer = null;
     }
   }
 
@@ -138,9 +158,10 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
   }
 
   nextSlide(): void {
-    if (!this.slides().length || this.isTransitioning()) return;
+  const slidesCount = this.slides().length;
+  if (!slidesCount || this.isTransitioning()) return;
 
-    const lastIndex = this.slides().length - 1;
+  const lastIndex = slidesCount - 1;
     const nextIndex = this.currentSlide() === lastIndex ?
       (this.loop ? 0 : lastIndex) :
       this.currentSlide() + 1;
@@ -149,9 +170,10 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
   }
 
   previousSlide(): void {
-    if (!this.slides().length || this.isTransitioning()) return;
+  const slidesCount = this.slides().length;
+  if (!slidesCount || this.isTransitioning()) return;
 
-    const lastIndex = this.slides().length - 1;
+  const lastIndex = slidesCount - 1;
     const prevIndex = this.currentSlide() === 0 ?
       (this.loop ? lastIndex : 0) :
       this.currentSlide() - 1;
@@ -180,22 +202,32 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
     const slides = this.slides();
     if (!slides.length) return;
 
+    // Load current and next first for fastest visual readiness
     this.isLoadingSignal.set(true);
-    let loadedCount = 0;
-    const totalImages = slides.length;
+    const currentIdx = this.currentSlide();
+    const nextIdx = (currentIdx + 1) % slides.length;
+    const priority = [slides[currentIdx]?.image, slides[nextIdx]?.image].filter(Boolean) as string[];
 
-    const checkAllLoaded = () => {
-      loadedCount++;
-      if (loadedCount >= totalImages) {
+    let priorityLoaded = 0;
+    const markReady = () => {
+      priorityLoaded++;
+      if (priorityLoaded >= Math.min(2, slides.length)) {
         this.isLoadingSignal.set(false);
       }
     };
 
-    slides.forEach(slide => {
+    priority.forEach(src => {
       const img = new Image();
-      img.onload = checkAllLoaded;
-      img.onerror = checkAllLoaded;
-      img.src = slide.image;
+      img.onload = markReady;
+      img.onerror = markReady;
+      img.src = src;
+    });
+
+    // Background-load remaining images without affecting loading state
+    slides.forEach((s, i) => {
+      if (i === currentIdx || i === nextIdx) return;
+      const img = new Image();
+      img.src = s.image;
     });
   }
 
@@ -294,8 +326,10 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
   // Handle window resize for responsive heights
   @HostListener('window:resize')
   onWindowResize(): void {
-    // Trigger height recalculation
-    this.containerHeight();
+    // Update screen width to trigger reactive height recomputation
+    if (typeof window !== 'undefined') {
+      this.screenWidth.set(window.innerWidth);
+    }
   }
 
   // Utility methods for template
