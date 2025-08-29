@@ -1,0 +1,35 @@
+[28-Jun-2025 20:57:47 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchAll() on null in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php:61
+Stack trace:
+#0 /home/tybocoza/store.tybo.co.za/api.v3/api/operations/run.php(52): Crud->getAll()
+#1 {main}
+  thrown in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php on line 61
+[28-Jun-2025 20:57:50 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchAll() on null in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php:61
+Stack trace:
+#0 /home/tybocoza/store.tybo.co.za/api.v3/api/operations/run.php(52): Crud->getAll()
+#1 {main}
+  thrown in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php on line 61
+[03-Jul-2025 19:54:49 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchAll() on null in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php:61
+Stack trace:
+#0 /home/tybocoza/store.tybo.co.za/api.v3/api/operations/run.php(52): Crud->getAll()
+#1 {main}
+  thrown in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php on line 61
+[03-Jul-2025 19:54:51 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchAll() on null in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php:61
+Stack trace:
+#0 /home/tybocoza/store.tybo.co.za/api.v3/api/operations/run.php(52): Crud->getAll()
+#1 {main}
+  thrown in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php on line 61
+[03-Jul-2025 19:55:04 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchAll() on null in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php:61
+Stack trace:
+#0 /home/tybocoza/store.tybo.co.za/api.v3/api/operations/run.php(52): Crud->getAll()
+#1 {main}
+  thrown in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php on line 61
+[08-Aug-2025 10:35:54 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchAll() on null in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php:61
+Stack trace:
+#0 /home/tybocoza/store.tybo.co.za/api.v3/api/operations/run.php(52): Crud->getAll()
+#1 {main}
+  thrown in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php on line 61
+[08-Aug-2025 10:35:57 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchAll() on null in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php:61
+Stack trace:
+#0 /home/tybocoza/store.tybo.co.za/api.v3/api/operations/run.php(52): Crud->getAll()
+#1 {main}
+  thrown in /home/tybocoza/store.tybo.co.za/api.v3/models/Crud.php on line 61

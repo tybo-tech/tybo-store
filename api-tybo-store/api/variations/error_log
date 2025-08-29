@@ -1,0 +1,9 @@
+[03-Jul-2025 19:43:41 UTC] PHP Warning:  Attempt to read property "company_id" on null in /home/tybocoza/store.tybo.co.za/api.v3/models/Variation.php on line 17
+[03-Jul-2025 19:43:41 UTC] PHP Warning:  Attempt to read property "name" on null in /home/tybocoza/store.tybo.co.za/api.v3/models/Variation.php on line 18
+[03-Jul-2025 19:43:41 UTC] PHP Warning:  Attempt to read property "type" on null in /home/tybocoza/store.tybo.co.za/api.v3/models/Variation.php on line 19
+[03-Jul-2025 19:43:41 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'company_id' cannot be null in /home/tybocoza/store.tybo.co.za/api.v3/models/Variation.php:20
+Stack trace:
+#0 /home/tybocoza/store.tybo.co.za/api.v3/models/Variation.php(20): PDOStatement->execute()
+#1 /home/tybocoza/store.tybo.co.za/api.v3/api/variations/add.php(12): Variation->add()
+#2 {main}
+  thrown in /home/tybocoza/store.tybo.co.za/api.v3/models/Variation.php on line 20

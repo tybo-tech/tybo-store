@@ -1,0 +1,32 @@
+[01-Jul-2025 14:21:07 UTC] PHP Warning:  Attempt to read property "variation_id" on null in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php on line 17
+[01-Jul-2025 14:21:07 UTC] PHP Warning:  Attempt to read property "name" on null in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php on line 18
+[01-Jul-2025 14:21:07 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'variation_id' cannot be null in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php:20
+Stack trace:
+#0 /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php(20): PDOStatement->execute()
+#1 /home/tybocoza/store.tybo.co.za/api.v3/api/variation-options/add.php(11): VariationOption->add()
+#2 {main}
+  thrown in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php on line 20
+[01-Jul-2025 14:21:18 UTC] PHP Warning:  Attempt to read property "variation_id" on null in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php on line 17
+[01-Jul-2025 14:21:18 UTC] PHP Warning:  Attempt to read property "name" on null in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php on line 18
+[01-Jul-2025 14:21:18 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'variation_id' cannot be null in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php:20
+Stack trace:
+#0 /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php(20): PDOStatement->execute()
+#1 /home/tybocoza/store.tybo.co.za/api.v3/api/variation-options/add.php(11): VariationOption->add()
+#2 {main}
+  thrown in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php on line 20
+[01-Jul-2025 14:21:20 UTC] PHP Warning:  Attempt to read property "variation_id" on null in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php on line 17
+[01-Jul-2025 14:21:20 UTC] PHP Warning:  Attempt to read property "name" on null in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php on line 18
+[01-Jul-2025 14:21:20 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'variation_id' cannot be null in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php:20
+Stack trace:
+#0 /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php(20): PDOStatement->execute()
+#1 /home/tybocoza/store.tybo.co.za/api.v3/api/variation-options/add.php(11): VariationOption->add()
+#2 {main}
+  thrown in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php on line 20
+[01-Jul-2025 14:21:27 UTC] PHP Warning:  Attempt to read property "variation_id" on null in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php on line 17
+[01-Jul-2025 14:21:27 UTC] PHP Warning:  Attempt to read property "name" on null in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php on line 18
+[01-Jul-2025 14:21:27 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'variation_id' cannot be null in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php:20
+Stack trace:
+#0 /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php(20): PDOStatement->execute()
+#1 /home/tybocoza/store.tybo.co.za/api.v3/api/variation-options/add.php(11): VariationOption->add()
+#2 {main}
+  thrown in /home/tybocoza/store.tybo.co.za/api.v3/models/VariationOption.php on line 20

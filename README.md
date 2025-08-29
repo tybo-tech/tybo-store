@@ -1,13 +1,53 @@
-# TyboStoreV2
+# Tybo Store v2 - E-commerce Website Builder
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.
+A comprehensive e-commerce platform with a sophisticated website builder featuring three distinct application shells: **Storefront**, **Dashboard**, and **Editor**.
 
-## Development server
+## 🏗️ Architecture Overview
 
-To start a local development server, run:
+This Angular 18+ application implements a unique three-app architecture within a single codebase:
 
+### 1. **Storefront** (`/`)
+- **Purpose**: Customer-facing e-commerce website
+- **Features**: Dynamic page rendering, product browsing, shopping cart
+- **Components**: Hero sliders, category grids, product listings, feature sections
+- **Responsive**: Mobile-first design with Tailwind CSS
+
+### 2. **Dashboard** (`/dashboard`)
+- **Purpose**: Admin interface for store management
+- **Features**: Product management, order processing, analytics
+- **Navigation**: Sidebar with sections for Products, Orders, Categories, Users
+- **Layout**: Professional admin interface with role-based access
+
+### 3. **Editor** (`/editor`)
+- **Purpose**: Visual website builder for creating and editing pages
+- **Features**: Drag-drop section management, real-time preview, responsive editing
+- **Components**: Section library, property panels, style editor
+- **Innovation**: JSON-based page structure with dynamic component rendering
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+
+- Angular CLI 18+
+- PHP 8+ (for backend API)
+
+### Installation
 ```bash
-ng serve
+# Clone the repository
+git clone [repository-url]
+cd tybo-store-v2
+
+# Install dependencies
+npm install
+
+# Start development server
+ng serve --port 4201
+
+# Access the applications:
+# Storefront: http://localhost:4201/
+# Dashboard: http://localhost:4201/dashboard
+# Editor: http://localhost:4201/editor
+```
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
