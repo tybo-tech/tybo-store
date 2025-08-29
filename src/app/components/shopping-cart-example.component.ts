@@ -198,7 +198,7 @@ export class ShoppingCartExampleComponent implements OnInit {
   }
 
   private loadCategories(): void {
-    this.categoryService.getCategories(this.companyId).subscribe({
+    this.categoryService.getCategoriesForCompany(this.companyId).subscribe({
       next: (categories) => this.categories.set(categories),
       error: (err) => console.error('Error loading categories:', err)
     });

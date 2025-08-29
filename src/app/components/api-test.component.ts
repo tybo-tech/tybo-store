@@ -162,7 +162,7 @@ export class ApiTestComponent implements OnInit {
     this.usersLoaded.set(false);
 
     // Test Categories API
-    this.categoryService.getCategories(1).subscribe({
+    this.categoryService.getCategoriesForCompany(1).subscribe({
       next: (categories) => {
         this.categoriesLoaded.set(true);
         console.log('Categories loaded:', categories.length);

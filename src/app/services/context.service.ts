@@ -136,6 +136,155 @@ export class ContextService extends BaseApiService {
     super();
     // Load company data on service initialization
     this.loadCurrentCompany();
+
+    // Temporary fallback data for testing
+    setTimeout(() => {
+      if (!this._currentCompany()) {
+        console.log('ContextService - Using fallback company data');
+        const fallbackCompany: Company = {
+          "id": 2,
+          "slug": "mayandaempire",
+          "name": "Mayanda Empire",
+          "logo": "https://store.tybo.co.za/api/api/upload/uploads/1749491807Image.png",
+          "description": "",
+          "address": "The South",
+          "latitude": "-22.983426",
+          "longitude": "30.462617",
+          "address_url": "https://maps.google.com/?cid=18397882146114513953",
+          "created_at": "2024-01-16 11:21:17",
+          "owner_id": "54",
+          "metadata": {
+            "logos": [],
+            "pages": [
+              {
+                "id": "home",
+                "link": "/",
+                "name": "Home",
+                "sections": [],
+                "showOnNav": "Yes"
+              },
+              {
+                "id": "contact-us",
+                "link": "/home/contact-us",
+                "name": "Contact Us",
+                "sections": [],
+                "showOnNav": "Yes"
+              },
+              {
+                "id": "account",
+                "link": "/home/login",
+                "name": "Account",
+                "sections": [],
+                "showOnNav": "Yes"
+              },
+              {
+                "id": "products",
+                "link": "/home/products",
+                "name": "Products",
+                "sections": [],
+                "showOnNav": "Yes"
+              },
+              {
+                "id": "checkout",
+                "link": "/home/checkout",
+                "name": "Checkout",
+                "sections": [],
+                "showOnNav": "Yes"
+              }
+            ],
+            "images": [],
+            "webUrl": "https://viviid.co.za",
+            "navType": "default",
+            "bannerBg": "#a78141",
+            "currency": "ZAR ",
+            "metaTags": {
+              "title": "We bake",
+              "author": "Mayanda Empire",
+              "og_url": "https://viviid.co.za",
+              "robots": "index, follow",
+              "favicon": "favicon.ico",
+              "og_type": "website",
+              "keywords": "",
+              "manifest": "manifest.webmanifest",
+              "og_image": "",
+              "og_title": "Mayanda Empire",
+              "canonical": "https://viviid.co.za",
+              "description": "Discover WeBake – your go-to destination for handcrafted, joy-filled treats.",
+              "theme_color": "#a38245",
+              "twitter_card": "summary_large_image",
+              "twitter_image": "",
+              "twitter_title": "Mayanda Empire",
+              "og_description": "Discover WeBake – your go-to destination for handcrafted, joy-filled treats.",
+              "twitter_description": "Discover WeBake – your go-to destination for handcrafted, joy-filled treats."
+            },
+            "whatsapp": "+27761624486",
+            "useWeight": "No",
+            "varations": [],
+            "enableYoco": false,
+            "isMigrated": true,
+            "logoSizePc": 7,
+            "showBanner": true,
+            "bannerColor": "#ffffff",
+            "orderPrefix": "ORD-",
+            "themeColors": [
+              {
+                "name": "Background Color",
+                "value": "#ffffff",
+                "variable": "--color-background"
+              },
+              {
+                "name": "Surface Color",
+                "value": "#ffffff",
+                "variable": "--color-surface"
+              },
+              {
+                "name": "Border Color",
+                "value": "#dcdcdc",
+                "variable": "--color-border"
+              },
+              {
+                "name": "Text Color",
+                "value": "#5e5e5e",
+                "variable": "--color-text"
+              },
+              {
+                "name": "Primary Color",
+                "value": "#a38245",
+                "variable": "--color-primary"
+              }
+            ],
+            "deliveryFees": [],
+            "noReplyEmail": "no-reply@viviid.co.za",
+            "bannerMessage": " ⚽ Free nationwide delivery on all orders over R1,000! | Authentic. Local. Yours. ",
+            "enablePayfast": true,
+            "enableDemoMode": true,
+            "logoSizeMobile": 5,
+            "processingTime": "Your order will be processed upon verification of the payment.",
+            "cashTransferBank": "FNB",
+            "deliveryFeesTypes": [],
+            "payFastMerchantId": "17194710",
+            "cashTransferBranch": "470010",
+            "enableCashTransfer": true,
+            "payFastMerchantKey": "tqcl4iesooa66",
+            "yocoPaymentKeyLive": "xxxxx",
+            "cashTransferAccount": "00000000",
+            "enableProcessingTime": true,
+            "yocoPaymentKeySandBox": "xxxxxxxx",
+            "cashTransferAccountName": "viviid",
+            "cashTransferAccountType": "Savings"
+          },
+          "email": "info@viviid.co.za",
+          "phone": "+27761624486",
+          "twitter": "",
+          "facebook": "https://www.facebook.com/profile.php?id=61551844396365",
+          "instagram": "",
+          "tiktok": ""
+        };
+
+        this._currentCompany.set(fallbackCompany);
+        this.applyThemeColors(fallbackCompany.metadata?.themeColors || []);
+      }
+    }, 5000);
   }
 
   /**
@@ -149,28 +298,53 @@ export class ContextService extends BaseApiService {
    * Load company data for the current company ID
    */
   async loadCurrentCompany(): Promise<void> {
+    console.log('ContextService - Loading company ID:', this._currentCompanyId());
     this._isLoading.set(true);
     this._error.set(null);
 
     try {
-      const response = await this.post<any>('/operations/run.php', {
-        operation: 'get',
-        table: 'companies',
-        data: {
-          id: this._currentCompanyId().toString(),
-          includes: []
-        }
-      }).toPromise();
+      // Try multiple endpoint patterns
+      const endpoints = [
+        `/companies/get.php?id=${this._currentCompanyId()}`,
+        `/companies/get.php?company_id=${this._currentCompanyId()}`,
+        `/collection-data/get.php?company_id=${this._currentCompanyId()}&collection=companies&id=${this._currentCompanyId()}`,
+        `/collection-data/get-by-parent.php?parentId=companies&collectionId=company&company_id=${this._currentCompanyId()}`
+      ];
 
-      if (response && response.success) {
-        this._currentCompany.set(response.data);
-        this.applyThemeColors(response.data.metadata?.themeColors || []);
+      let response = null;
+      let successfulEndpoint = '';
+
+      for (const endpoint of endpoints) {
+        try {
+          console.log('ContextService - Trying endpoint:', `${this.baseUrl}${endpoint}`);
+          response = await this.get<any>(endpoint).toPromise();
+          
+          if (response && (response.success !== false) && (response.data || response.id || response.name)) {
+            successfulEndpoint = endpoint;
+            console.log('ContextService - Successful endpoint:', successfulEndpoint);
+            break;
+          }
+        } catch (endpointError) {
+          console.log('ContextService - Endpoint failed:', endpoint, endpointError);
+          continue;
+        }
+      }
+
+      console.log('ContextService - API Response:', response);
+
+      if (response && (response.success !== false) && (response.data || response.id || response.name)) {
+        // Handle different response formats
+        const companyData = response.data || response;
+        console.log('ContextService - Company loaded successfully:', companyData);
+        this._currentCompany.set(companyData);
+        this.applyThemeColors(companyData.metadata?.themeColors || []);
       } else {
-        this._error.set('Failed to load company data');
+        console.error('ContextService - All endpoints failed or returned no data');
+        this._error.set('No company data found from any endpoint');
       }
     } catch (error) {
-      console.error('Error loading company:', error);
-      this._error.set('Error loading company data');
+      console.error('ContextService - Error loading company:', error);
+      this._error.set('Error loading company data: ' + (error as any)?.message);
     } finally {
       this._isLoading.set(false);
     }

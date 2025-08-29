@@ -4,11 +4,41 @@ export const routes: Routes = [
   // Storefront routes (default)
   {
     path: '',
-    loadComponent: () => import('./apps/storefront/pages/home.component').then(m => m.StorefrontHomeComponent)
+    loadComponent: () => import('./pages/home-page.component').then(m => m.HomePageComponent)
   },
   {
     path: 'shop',
-    loadComponent: () => import('./components/product-list.component').then(m => m.ProductListComponent)
+    loadComponent: () => import('./pages/shop-page.component').then(m => m.ShopPageComponent)
+  },
+  {
+    path: 'categories',
+    loadComponent: () => import('./components/category-showcase.component').then(m => m.CategoryShowcaseComponent)
+  },
+  {
+    path: 'icons',
+    loadComponent: () => import('./components/icon-examples.component').then(m => m.IconExamplesComponent)
+  },
+  {
+    path: 'page/:pageId',
+    loadComponent: () => import('./pages/page.component').then(m => m.PageComponent)
+  },
+  {
+    path: 'cart',
+    loadComponent: () => import('./pages/cart-page.component').then(m => m.CartPageComponent)
+  },
+  {
+    path: 'account',
+    loadComponent: () => import('./pages/account-page.component').then(m => m.AccountPageComponent)
+  },
+  {
+    path: 'contact',
+    loadComponent: () => import('./pages/page.component').then(m => m.PageComponent),
+    data: { pageId: 'contact-us' }
+  },
+  {
+    path: 'about',
+    loadComponent: () => import('./pages/page.component').then(m => m.PageComponent),
+    data: { pageId: 'about-us' }
   },
   {
     path: 'login',
@@ -36,6 +66,10 @@ export const routes: Routes = [
   },
 
   // Editor routes
+  {
+    path: 'editor/:pageId',
+    loadComponent: () => import('./apps/editor/pages/editor-page.component').then(m => m.EditorPageComponent)
+  },
   {
     path: 'editor',
     loadComponent: () => import('./apps/editor/editor-layout.component').then(m => m.EditorLayoutComponent)

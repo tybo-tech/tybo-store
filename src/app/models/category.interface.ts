@@ -1,14 +1,16 @@
 export interface Category {
   id: number;
+  company_id: number;
   name: string;
   description?: string;
-  image?: string;
-  company_id: number;
-  parent_id?: number;
-  sort_order?: number;
-  is_active?: boolean;
+  image_url?: string;
+  parent_id?: number | null;
   created_at?: string;
   updated_at?: string;
+  featured?: number;
+  slug?: string;
+  sort_order?: number;
+  is_active?: boolean;
 }
 
 export interface CategoryFilter {
