@@ -1,3 +1,9 @@
+// NOTE: Scope clarification
+// This dynamic renderer is strictly for Company Pages and their Sections/Elements.
+// It does not depend on or use any Website/WebsitePage models or services.
+// Keep inputs and logic limited to PageSection and PageElement as used below.
+// Scope: Company Pages only
+// This renderer handles PageSection and PageElement for company pages (no website objects).
 import { Component, Input, computed, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -38,6 +44,12 @@ import { HeroSliderComponent } from './sections/hero-slider-new.component';
           [id]="element.id">
         </app-feature-intro>
       }
+      @case ('feature-intro1') {
+        <app-feature-intro
+          [section]="asPageSection()"
+          [id]="element.id">
+        </app-feature-intro>
+      }
       @case ('nine-grid-category') {
         <app-nine-grid-category
           [section]="asPageSection()"
@@ -45,6 +57,12 @@ import { HeroSliderComponent } from './sections/hero-slider-new.component';
         </app-nine-grid-category>
       }
       @case ('category-products') {
+        <app-category-products
+          [section]="asPageSection()"
+          [id]="element.id">
+        </app-category-products>
+      }
+      @case ('category-with-products') {
         <app-category-products
           [section]="asPageSection()"
           [id]="element.id">

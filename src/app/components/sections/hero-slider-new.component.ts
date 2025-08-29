@@ -91,6 +91,13 @@ export class HeroSliderComponent implements OnInit, OnDestroy, OnChanges {
   showArrowsComputed = computed(() => this.showArrows);
   autoPlayInterval = computed(() => this.intervalMs);
 
+  // CSS-safe class names for storefront style manager
+  private sanitizeId(id?: string) {
+    return (id || 'unknown').replace(/[^a-zA-Z0-9_-]/g, '-');
+  }
+  sectionClass = computed(() => `sec-${this.sanitizeId(this.section?.id)}`);
+  containerClassName = computed(() => `cont-${this.sanitizeId(this.section?.container?.id)}`);
+
   ngOnInit(): void {
     // Initialize autoplay if enabled and we have multiple slides
     if (this.autoPlay && this.slides().length > 1) {

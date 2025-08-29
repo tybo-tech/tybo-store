@@ -3,7 +3,7 @@
   Features: autoplay, keyboard nav, touch/swipe, a11y, responsive design
 -->
 <div
-  class="relative w-full overflow-hidden rounded-0 shadow-xl"
+  [ngClass]="[sectionClass(), containerClassName(), 'relative w-full overflow-hidden rounded-0 shadow-xl']"
   role="region"
   aria-roledescription="carousel"
   [attr.aria-label]="'Hero slider with ' + slides().length + ' slides'"

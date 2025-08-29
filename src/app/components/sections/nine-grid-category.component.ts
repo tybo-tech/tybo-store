@@ -113,6 +113,13 @@ export class NineGridCategoryComponent implements OnInit, OnChanges {
     return c.slug ? { category: c.slug } : null;
   }
 
+  // CSS-safe class names for storefront style manager
+  private sanitizeId(id?: string) {
+    return (id || 'unknown').replace(/[^a-zA-Z0-9_-]/g, '-');
+  }
+  sectionClass = computed(() => `sec-${this.sanitizeId(this.section?.id)}`);
+  containerClassName = computed(() => `cont-${this.sanitizeId(this.section?.container?.id)}`);
+
   ngOnInit(): void {
     this.ensureFeaturedLoaded();
   }
