@@ -1,0 +1,186 @@
+<!--
+  Enhanced Hero Slider with Tailwind CSS styling
+  Features: autoplay, keyboard nav, touch/swipe, a11y, responsive design
+-->
+<div
+  class="relative w-full overflow-hidden rounded-0 shadow-xl"
+  role="region"
+  aria-roledescription="carousel"
+  [attr.aria-label]="'Hero slider with ' + slides().length + ' slides'"
+  tabindex="0"
+  (keydown)="onKeyDown($event)"
+  (mouseenter)="pauseAutoPlay()"
+  (mouseleave)="resumeAutoPlay()"
+  (touchstart)="onTouchStart($event)"
+  (touchend)="onTouchEnd($event)"
+  [style.height.px]="containerHeight()"
+>
+  <!-- Slides Container -->
+  <div class="relative w-full h-full">
+    @for (slide of slides(); track $index) {
+      <div
+        class="absolute inset-0 transition-opacity duration-500 will-change-[opacity]"
+        [class.opacity-100]="$index === currentSlide()"
+        [class.opacity-0]="$index !== currentSlide()"
+        [class.pointer-events-none]="$index !== currentSlide()"
+        [attr.aria-hidden]="$index === currentSlide() ? 'false' : 'true'"
+      >
+        <!-- Background Image -->
+        <div
+          class="h-full w-full bg-cover bg-center bg-no-repeat transition-transform duration-[6000ms] ease-out"
+          [class.scale-110]="enableKenBurns() && $index === currentSlide()"
+          [style.background-image]="'url(' + slide.image + ')'"
+        ></div>
+
+        <!-- Overlay -->
+        @if (showOverlayComputed()) {
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+        }
+
+        <!-- Content -->
+        <div class="absolute inset-x-0 bottom-0 p-6 md:p-10 text-white">
+          <div class="max-w-4xl transform transition-all duration-700"
+               [class.translate-y-0]="$index === currentSlide()"
+               [class.translate-y-8]="$index !== currentSlide()"
+               [class.opacity-100]="$index === currentSlide()"
+               [class.opacity-0]="$index !== currentSlide()">
+
+            <h2 class="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight drop-shadow-lg mb-3 md:mb-4">
+              {{ slide.title }}
+            </h2>
+
+            <p class="text-sm md:text-base lg:text-lg opacity-95 mb-5 leading-relaxed max-w-2xl">
+              {{ slide.description }}
+            </p>
+
+            @if (slide.link) {
+              <a
+                [routerLink]="slide.link"
+                class="inline-flex items-center gap-2 rounded-0 bg-white/90 backdrop-blur-sm px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-white transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/50"
+                [attr.aria-label]="'Navigate to ' + slide.title"
+              >
+                <span>{{ ctaText() }}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+              </a>
+            }
+          </div>
+        </div>
+
+        <!-- Progress Bar for Current Slide -->
+        @if ($index === currentSlide() && autoPlayEnabled() && slides().length > 1) {
+          <div class="absolute bottom-0 left-0 w-full h-1 bg-white/20">
+            <div
+              class="h-full bg-white animate-progress"
+              [style.animation-duration]="autoPlayInterval() + 'ms'"
+            ></div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- Navigation Arrows -->
+  @if (showArrowsComputed() && slides().length > 1) {
+    <button
+      type="button"
+      class="absolute left-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm p-3 text-white hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
+      aria-label="Previous slide"
+      [disabled]="isTransitioning()"
+      (click)="previousSlide()"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M12.707 15.707a1 1 0 01-1.414 0L5.586 10l5.707-5.707a1 1 0 111.414 1.414L8.414 10l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+      </svg>
+    </button>
+
+    <button
+      type="button"
+      class="absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm p-3 text-white hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
+      aria-label="Next slide"
+      [disabled]="isTransitioning()"
+      (click)="nextSlide()"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M7.293 4.293a1 1 0 011.414 0L14.414 10l-5.707 5.707a1 1 0 11-1.414-1.414L11.586 10 7.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+      </svg>
+    </button>
+  }
+
+  <!-- Indicator Dots -->
+  @if (showIndicatorsComputed() && slides().length > 1) {
+    <div
+      class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2"
+      role="tablist"
+      aria-label="Slide indicators"
+    >
+      @for (slide of slides(); track $index) {
+        <button
+          type="button"
+          class="h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 hover:scale-110"
+          [class.bg-white]="$index === currentSlide()"
+          [class.bg-white/50]="$index !== currentSlide()"
+          [style.width.px]="$index === currentSlide() ? 18 : 10"
+          [attr.aria-selected]="$index === currentSlide()"
+          [attr.aria-label]="'Go to slide ' + ($index + 1) + ': ' + slide.title"
+          role="tab"
+          (click)="goToSlide($index)"
+        ></button>
+      }
+    </div>
+  }
+
+  <!-- Play/Pause Control -->
+  @if (slides().length > 1) {
+    <button
+      type="button"
+      class="absolute top-4 right-4 inline-flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm p-2.5 text-white hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 hover:scale-110"
+      [attr.aria-label]="autoPlayEnabled() ? 'Pause slideshow' : 'Play slideshow'"
+      (click)="toggleAutoPlay()"
+    >
+      @if (autoPlayEnabled()) {
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>
+        </svg>
+      } @else {
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>
+        </svg>
+      }
+    </button>
+  }
+
+  <!-- Slide Counter -->
+  @if (showSlideCounter && slides().length > 1) {
+    <div
+      class="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-sm text-white text-sm font-medium"
+      aria-live="polite"
+    >
+      <span>{{ currentSlide() + 1 }}</span>
+      <span class="mx-1 opacity-60">/</span>
+      <span>{{ slides().length }}</span>
+    </div>
+  }
+
+  <!-- Loading Indicator -->
+  @if (isLoading()) {
+    <div class="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+      <div class="text-center text-white">
+        <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-white/30 border-t-white mb-3"></div>
+        <p class="text-sm font-medium">Loading images...</p>
+      </div>
+    </div>
+  }
+</div>
+
+<style>
+  @keyframes progress {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+
+  .animate-progress {
+    animation: progress linear;
+  }
+</style>

@@ -318,7 +318,7 @@ export class ContextService extends BaseApiService {
         try {
           console.log('ContextService - Trying endpoint:', `${this.baseUrl}${endpoint}`);
           response = await this.get<any>(endpoint).toPromise();
-          
+
           if (response && (response.success !== false) && (response.data || response.id || response.name)) {
             successfulEndpoint = endpoint;
             console.log('ContextService - Successful endpoint:', successfulEndpoint);

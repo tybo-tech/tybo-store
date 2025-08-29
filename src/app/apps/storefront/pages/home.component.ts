@@ -2,11 +2,11 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WebsiteService, ContextService } from '../../../services';
 import { WebsitePageData, PageSection } from '../../../models';
-import { HeroSliderComponent } from '../sections/hero-slider.component';
 import { NineGridCategoryComponent } from '../sections/nine-grid-category.component';
 import { FeatureIntroComponent } from '../sections/feature-intro.component';
 import { CategoryProductsComponent } from '../sections/category-products.component';
 import { CompanyInfoComponent } from '../../../components/company-info.component';
+import { HeroSliderComponent } from '../../../components/sections/hero-slider-new.component';
 // NOTE: DynamicElementComponent imports section components, avoiding circular dependency
 
 @Component({

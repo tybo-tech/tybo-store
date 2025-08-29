@@ -38,9 +38,9 @@ import { PageElement } from '../models/website.interface';
 
 // Import section components
 import { FeatureIntroComponent } from '../apps/storefront/sections/feature-intro.component';
-import { HeroSliderComponent } from '../apps/storefront/sections/hero-slider.component';
 import { NineGridCategoryComponent } from '../apps/storefront/sections/nine-grid-category.component';
 import { CategoryProductsComponent } from '../apps/storefront/sections/category-products.component';
+import { HeroSliderComponent } from './sections/hero-slider-new.component';
 
 @Component({
   selector: 'app-dynamic-element',
