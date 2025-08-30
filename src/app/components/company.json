@@ -25,7 +25,7 @@
                 "link": "\/home\/about-us",
                 "name": "About Us",
                 "sections": [],
-                "showOnNav": "No"
+                "showOnNav": "Yes"
             },
             {
                 "id": "contact-us",

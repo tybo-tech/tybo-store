@@ -1,0 +1,385 @@
+[
+  {
+    "id": 100,
+    "collection_id": "page",
+    "parent_id": "about-us",
+    "data": {
+      "sections": [
+        {
+          "id": "section-about-hero",
+          "type": "hero-banner",
+          "image": "hero-banner.png",
+          "pageId": "about-us",
+          "styles": {
+            "pc": {
+              "width": "100%",
+              "padding": "80px 20px",
+              "background-color": "var(--color-primary)",
+              "color": "var(--color-surface)"
+            },
+            "mobile": {
+              "padding": "40px 12px"
+            },
+            "tablet": {
+              "padding": "60px 16px"
+            }
+          },
+          "container": {
+            "id": "el-about-hero-container",
+            "tag": "div",
+            "styles": {
+              "pc": {
+                "margin": "0 auto",
+                "max-width": "800px",
+                "text-align": "center"
+              }
+            },
+            "children": [
+              {
+                "id": "el-about-hero-title",
+                "tag": "h1",
+                "value": "About Mayanda Empire",
+                "styles": {
+                  "pc": {
+                    "font-size": "3rem",
+                    "font-weight": "700",
+                    "margin-bottom": "1rem",
+                    "color": "var(--color-surface)"
+                  },
+                  "mobile": {
+                    "font-size": "2rem"
+                  }
+                }
+              },
+              {
+                "id": "el-about-hero-subtitle",
+                "tag": "p",
+                "value": "Redefining streetwear with passion, style, and community at heart.",
+                "styles": {
+                  "pc": {
+                    "font-size": "1.25rem",
+                    "opacity": "0.9",
+                    "color": "var(--color-surface)"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "section-about-story",
+          "type": "content-block",
+          "image": "content-block.png",
+          "pageId": "about-us",
+          "styles": {
+            "pc": {
+              "width": "100%",
+              "padding": "80px 20px",
+              "background-color": "var(--color-background)"
+            },
+            "mobile": {
+              "padding": "40px 12px"
+            }
+          },
+          "container": {
+            "id": "el-about-story-container",
+            "tag": "div",
+            "styles": {
+              "pc": {
+                "margin": "0 auto",
+                "max-width": "1000px",
+                "display": "grid",
+                "grid-template-columns": "1fr 1fr",
+                "gap": "4rem",
+                "align-items": "center"
+              },
+              "mobile": {
+                "grid-template-columns": "1fr",
+                "gap": "2rem"
+              }
+            },
+            "children": [
+              {
+                "id": "el-about-story-content",
+                "tag": "div",
+                "styles": {
+                  "pc": {
+                    "padding": "2rem"
+                  }
+                },
+                "children": [
+                  {
+                    "id": "el-about-story-title",
+                    "tag": "h2",
+                    "value": "Our Story",
+                    "styles": {
+                      "pc": {
+                        "font-size": "2.5rem",
+                        "font-weight": "700",
+                        "margin-bottom": "1.5rem",
+                        "color": "var(--color-text)"
+                      }
+                    }
+                  },
+                  {
+                    "id": "el-about-story-text",
+                    "tag": "p",
+                    "value": "Founded with a vision to bridge the gap between authentic streetwear and community spirit, Mayanda Empire has grown from a small startup to a movement that celebrates individuality while fostering unity.",
+                    "styles": {
+                      "pc": {
+                        "font-size": "1.1rem",
+                        "line-height": "1.8",
+                        "margin-bottom": "1.5rem",
+                        "color": "var(--color-muted)"
+                      }
+                    }
+                  },
+                  {
+                    "id": "el-about-story-text2",
+                    "tag": "p",
+                    "value": "Every piece in our collection tells a story of craftsmanship, passion, and dedication to quality that resonates with our community of style enthusiasts.",
+                    "styles": {
+                      "pc": {
+                        "font-size": "1.1rem",
+                        "line-height": "1.8",
+                        "color": "var(--color-muted)"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "el-about-story-image",
+                "tag": "img",
+                "attributes": {
+                  "src": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop",
+                  "alt": "Our Story"
+                },
+                "styles": {
+                  "pc": {
+                    "width": "100%",
+                    "height": "400px",
+                    "object-fit": "cover",
+                    "border-radius": "12px"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "section-about-values",
+          "type": "values-grid",
+          "image": "values-grid.png",
+          "pageId": "about-us",
+          "styles": {
+            "pc": {
+              "width": "100%",
+              "padding": "80px 20px",
+              "background-color": "var(--color-surface)"
+            }
+          },
+          "container": {
+            "id": "el-about-values-container",
+            "tag": "div",
+            "styles": {
+              "pc": {
+                "margin": "0 auto",
+                "max-width": "1200px"
+              }
+            },
+            "children": [
+              {
+                "id": "el-about-values-title",
+                "tag": "h2",
+                "value": "Our Values",
+                "styles": {
+                  "pc": {
+                    "font-size": "2.5rem",
+                    "font-weight": "700",
+                    "text-align": "center",
+                    "margin-bottom": "3rem",
+                    "color": "var(--color-text)"
+                  }
+                }
+              },
+              {
+                "id": "el-about-values-grid",
+                "tag": "div",
+                "styles": {
+                  "pc": {
+                    "display": "grid",
+                    "grid-template-columns": "repeat(3, 1fr)",
+                    "gap": "2rem"
+                  },
+                  "mobile": {
+                    "grid-template-columns": "1fr"
+                  }
+                },
+                "children": [
+                  {
+                    "id": "el-value-1",
+                    "tag": "div",
+                    "styles": {
+                      "pc": {
+                        "text-align": "center",
+                        "padding": "2rem",
+                        "border-radius": "12px",
+                        "background-color": "var(--color-background)",
+                        "border": "1px solid var(--color-border)"
+                      }
+                    },
+                    "children": [
+                      {
+                        "id": "el-value-1-icon",
+                        "tag": "div",
+                        "value": "🎯",
+                        "styles": {
+                          "pc": {
+                            "font-size": "3rem",
+                            "margin-bottom": "1rem"
+                          }
+                        }
+                      },
+                      {
+                        "id": "el-value-1-title",
+                        "tag": "h3",
+                        "value": "Quality First",
+                        "styles": {
+                          "pc": {
+                            "font-size": "1.5rem",
+                            "font-weight": "600",
+                            "margin-bottom": "1rem",
+                            "color": "var(--color-text)"
+                          }
+                        }
+                      },
+                      {
+                        "id": "el-value-1-desc",
+                        "tag": "p",
+                        "value": "Every product is crafted with meticulous attention to detail and premium materials.",
+                        "styles": {
+                          "pc": {
+                            "color": "var(--color-muted)",
+                            "line-height": "1.6"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "el-value-2",
+                    "tag": "div",
+                    "styles": {
+                      "pc": {
+                        "text-align": "center",
+                        "padding": "2rem",
+                        "border-radius": "12px",
+                        "background-color": "var(--color-background)",
+                        "border": "1px solid var(--color-border)"
+                      }
+                    },
+                    "children": [
+                      {
+                        "id": "el-value-2-icon",
+                        "tag": "div",
+                        "value": "🤝",
+                        "styles": {
+                          "pc": {
+                            "font-size": "3rem",
+                            "margin-bottom": "1rem"
+                          }
+                        }
+                      },
+                      {
+                        "id": "el-value-2-title",
+                        "tag": "h3",
+                        "value": "Community",
+                        "styles": {
+                          "pc": {
+                            "font-size": "1.5rem",
+                            "font-weight": "600",
+                            "margin-bottom": "1rem",
+                            "color": "var(--color-text)"
+                          }
+                        }
+                      },
+                      {
+                        "id": "el-value-2-desc",
+                        "tag": "p",
+                        "value": "Building connections and supporting our local community through every interaction.",
+                        "styles": {
+                          "pc": {
+                            "color": "var(--color-muted)",
+                            "line-height": "1.6"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "el-value-3",
+                    "tag": "div",
+                    "styles": {
+                      "pc": {
+                        "text-align": "center",
+                        "padding": "2rem",
+                        "border-radius": "12px",
+                        "background-color": "var(--color-background)",
+                        "border": "1px solid var(--color-border)"
+                      }
+                    },
+                    "children": [
+                      {
+                        "id": "el-value-3-icon",
+                        "tag": "div",
+                        "value": "🚀",
+                        "styles": {
+                          "pc": {
+                            "font-size": "3rem",
+                            "margin-bottom": "1rem"
+                          }
+                        }
+                      },
+                      {
+                        "id": "el-value-3-title",
+                        "tag": "h3",
+                        "value": "Innovation",
+                        "styles": {
+                          "pc": {
+                            "font-size": "1.5rem",
+                            "font-weight": "600",
+                            "margin-bottom": "1rem",
+                            "color": "var(--color-text)"
+                          }
+                        }
+                      },
+                      {
+                        "id": "el-value-3-desc",
+                        "tag": "p",
+                        "value": "Constantly pushing boundaries to bring fresh, exciting designs to streetwear.",
+                        "styles": {
+                          "pc": {
+                            "color": "var(--color-muted)",
+                            "line-height": "1.6"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "company_id": 2,
+    "website_id": null,
+    "created_at": "2025-08-30 10:00:00",
+    "created_by": null,
+    "updated_at": "2025-08-30 10:00:00",
+    "updated_by": null,
+    "status_id": 1
+  }
+]

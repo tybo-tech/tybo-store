@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { StorefrontPageComponent } from '../apps/storefront/pages/storefront-page.component';
+import { ContextService } from '../services';
 
 @Component({
   selector: 'app-page',
@@ -14,7 +15,7 @@ import { StorefrontPageComponent } from '../apps/storefront/pages/storefront-pag
     @if (pageId) {
       <app-storefront-page
         [pageId]="pageId"
-        [companyId]="2"
+        [companyId]="context.currentCompanyId()"
         [pageTitle]="getPageTitle(pageId)">
       </app-storefront-page>
     }
@@ -22,8 +23,11 @@ import { StorefrontPageComponent } from '../apps/storefront/pages/storefront-pag
 })
 export class PageComponent {
   private route = inject(ActivatedRoute);
+  public readonly context = inject(ContextService);
 
-  pageId = this.route.snapshot.paramMap.get('pageId') || '';
+  pageId = this.route.snapshot.paramMap.get('pageId') ||
+           this.route.snapshot.data['pageId'] ||
+           'home';
 
   getPageTitle(pageId: string): string {
     const titles: Record<string, string> = {

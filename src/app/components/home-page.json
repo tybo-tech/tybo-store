@@ -1,388 +1,967 @@
 [
-  {
-    "id": 99,
-    "collection_id": "page",
-    "parent_id": "home",
-    "data": {
-      "sections": [
-        {
-          "id": "section-0f8b9131-3e6a-4ec4-b17c-e6566dfd89d5",
-          "type": "hero-slider",
-          "image": "hero-slider.png",
-          "pageId": "home",
-          "styles": {
-            "pc": {
-              "width": "100%",
-              "padding": "0",
-              "background-color": "#f3f4f6"
-            },
-            "mobile": {
-              "padding": "30px 12px"
-            },
-            "tablet": {
-              "padding": "40px 16px"
-            }
-          },
-          "container": {
-            "id": "el-84a14c90-0de6-4ea9-9df0-6311683fdcd4",
-            "tag": "div",
-            "styles": {
-              "pc": {
-                "margin": "0 auto",
-                "padding": "0",
-                "max-width": "100%"
-              },
-              "mobile": {
-                "padding": "30px 12px"
-              },
-              "tablet": {
-                "padding": "40px 16px"
-              }
-            },
-            "children": [
-              {
-                "id": "el-f4bfb5c9-81fc-40bb-a529-d30a329a9eb1",
-                "tag": "hero-slider",
-                "styles": {
-                  "pc": {
-                    "width": "100%",
-                    "height": "600px",
-                    "position": "relative"
-                  },
-                  "mobile": {
-                    "height": "300px"
-                  },
-                  "tablet": {
-                    "height": "400px"
-                  }
-                },
-                "content": [
-                  {
-                    "link": "/home/shop",
-                    "image": "https://store.tybo.co.za/api/api/upload/uploads/1749492341leah-hetteberg-IoJFOvbqF3c-unsplash.jpg",
-                    "title": "Wear Your Passion.",
-                    "description": "Shop authentic jerseys from South Africa\u2019s top clubs and show the world where your heart belongs."
-                  },
-                  {
-                    "link": "/home/shop",
-                    "image": "https://store.tybo.co.za/api/api/upload/uploads/1749492628mauro-lima-a0-eHqz4D_I-unsplash.jpg",
-                    "title": "Supporters. Not Just Customers.",
-                    "description": "Join a movement that celebrates real fans, rewards loyalty, and uplifts local communities with every purchase."
-                  },
-                  {
-                    "link": "/home/shop",
-                    "image": "https://store.tybo.co.za/api/api/upload/uploads/1749492669fotos-x737m9hjiUc-unsplash.jpg",
-                    "title": "Game Day, Every Day.",
-                    "description": "Bring the match-day experience home with official gear, bold streetwear, and exclusive supporter benefits."
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "id": "section-760929e0-3d1a-491a-81a5-cd05457312b3",
-          "type": "nine-grid-category",
-          "image": "nine-grid-category.png",
-          "pageId": "home",
-          "styles": {
-            "pc": {
-              "width": "100%",
-              "padding": "60px 20px",
-              "background-color": "#f3f4f6"
-            },
-            "mobile": {
-              "padding": "30px 12px"
-            },
-            "tablet": {
-              "padding": "40px 16px"
-            }
-          },
-          "container": {
-            "id": "el-62a03478-431a-4577-adfc-f3b1cf464b11",
-            "tag": "div",
-            "styles": {
-              "pc": {
-                "margin": "0 auto",
-                "padding": "60px 20px",
-                "max-width": "1200px"
-              },
-              "mobile": {
-                "padding": "30px 12px"
-              },
-              "tablet": {
-                "padding": "40px 16px"
-              }
-            },
-            "children": [
-              {
-                "id": "el-f124f110-26ba-43ab-b555-8efbbc902f42",
-                "tag": "nine-grid-category",
-                "styles": {
-                  "pc": {
-                    "width": "100%"
-                  },
-                  "mobile": [],
-                  "tablet": []
-                },
-                "content": []
-              }
-            ]
-          }
-        },
-        {
-          "id": "section-40cb7393-4326-40bd-9d8f-3befa4c8d112",
-          "type": "feature-intro1",
-          "image": "feature-intro1.png",
-          "pageId": "home",
-          "styles": {
-            "pc": {
-              "width": "100%",
-              "padding": "60px 20px",
-              "background-color": "#f3f4f6"
-            },
-            "mobile": {
-              "padding": "30px 12px"
-            },
-            "tablet": {
-              "padding": "40px 16px"
-            }
-          },
-          "container": {
-            "id": "el-89e72693-9fc7-436d-bfcf-10ac9775230d",
-            "tag": "div",
-            "styles": {
-              "pc": {
-                "margin": "0 auto",
-                "padding": "60px 20px",
-                "max-width": "1200px"
-              },
-              "mobile": {
-                "padding": "30px 12px"
-              },
-              "tablet": {
-                "padding": "40px 16px"
-              }
-            },
-            "children": [
-              {
-                "id": "el-5a3131ea-ff95-4cb6-9116-da99936d31be",
-                "tag": "div",
-                "styles": {
-                  "pc": {
-                    "gap": "20px",
-                    "margin": "0 auto",
-                    "display": "flex",
-                    "padding": "60px 20px",
-                    "max-width": "900px",
-                    "text-align": "center",
-                    "align-items": "center",
-                    "flex-direction": "column"
-                  },
-                  "mobile": {
-                    "padding": "30px 12px"
-                  },
-                  "tablet": {
-                    "padding": "40px 16px"
-                  }
-                },
-                "children": [
-                  {
-                    "id": "el-3197b46a-d260-44a1-9a4c-70b838051d29",
-                    "tag": "h3",
-                    "value": " Welcome to Mayanda Empire ",
+    {
+        "id": 87,
+        "collection_id": "page",
+        "parent_id": "home",
+        "data": {
+            "sections": [
+                {
+                    "id": "section-55f70fd4-d58f-47d9-a148-183370f3a5f4",
+                    "type": "category-slider",
+                    "image": "category-slider.png",
+                    "pageId": "home",
                     "styles": {
-                      "pc": {
-                        "color": "#111827",
-                        "font-size": "2rem",
-                        "font-weight": "700"
-                      },
-                      "mobile": {
-                        "font-size": "2rem"
-                      },
-                      "tablet": {
-                        "font-size": "2.5rem"
-                      }
+                        "pc": {
+                            "width": "100%",
+                            "margin": "0",
+                            "padding": "0",
+                            "background-color": "#ffffff"
+                        },
+                        "mobile": {
+                            "padding": "0"
+                        },
+                        "tablet": {
+                            "padding": "0"
+                        }
+                    },
+                    "container": {
+                        "id": "el-0753ac5f-d43b-406c-a50e-6778bc512340",
+                        "tag": "div",
+                        "styles": {
+                            "pc": {
+                                "width": "100%",
+                                "margin": "0 auto",
+                                "padding": "0",
+                                "max-width": "100%",
+                                "background-color": "#ffffff"
+                            },
+                            "mobile": {
+                                "padding": "0"
+                            },
+                            "tablet": {
+                                "padding": "0"
+                            }
+                        },
+                        "children": [
+                            {
+                                "id": "el-eef41016-ffe5-4e1b-a428-bd5ebae23487",
+                                "tag": "category-slider",
+                                "styles": {
+                                    "pc": {
+                                        "width": "100%",
+                                        "height": "480px"
+                                    },
+                                    "mobile": {
+                                        "width": "100%",
+                                        "height": "360px",
+                                        "padding": "0"
+                                    },
+                                    "tablet": {
+                                        "width": "100%",
+                                        "height": "400px"
+                                    }
+                                },
+                                "content": [
+                                    {
+                                        "link": "\/home\/category\/1",
+                                        "image": "https:\/\/store.tybo.co.za\/api.v3\/api\/upload\/uploads\/1750608025alek-kalinowski-Sj_3Jdr19L4-unsplash.jpg",
+                                        "title": "Work Wear",
+                                        "button": "Shop now",
+                                        "subtitle": "Cameras, Drones, Wearable tech and more"
+                                    },
+                                    {
+                                        "link": "\/home\/category\/1",
+                                        "image": "https:\/\/store.tybo.co.za\/api.v3\/api\/upload\/uploads\/17508670873.png",
+                                        "title": "Printing Machines",
+                                        "button": "Explore",
+                                        "subtitle": "Essentials for every room, made affordable"
+                                    },
+                                    {
+                                        "link": "\/home\/category\/1",
+                                        "image": "https:\/\/store.tybo.co.za\/api.v3\/api\/upload\/uploads\/1751378605corporate-training.jpg",
+                                        "title": "Custom Prints",
+                                        "button": "Browse",
+                                        "subtitle": "Fresh styles and daily steals \u2014 just for you"
+                                    }
+                                ]
+                            }
+                        ]
                     }
-                  },
-                  {
-                    "id": "el-5864b4e3-e7f2-4078-82bb-d3332882ce2f",
-                    "tag": "p",
-                    "value": "We strives to provide trendsetting streetwear that merges comfort and style effortlessly. We aim to redefine your wardrobe with meticulously curated collections, reflecting the pulse of modern fashion. ",
-                    "styles": {
-                      "pc": {
-                        "color": "#4B5563",
-                        "font-size": ".85rem",
-                        "line-height": "1.6"
-                      },
-                      "mobile": {
-                        "font-size": "0.95rem"
-                      },
-                      "tablet": {
-                        "font-size": "1rem"
-                      }
-                    }
-                  },
-                  {
-                    "id": "el-0af9971c-7802-4842-90e1-7b0970beafff",
-                    "tag": "button",
-                    "link": "/home/about-us",
-                    "value": "Read More",
-                    "styles": {
-                      "pc": {
-                        "color": "#fff",
-                        "padding": "12px 24px",
-                        "font-size": "1rem",
-                        "border-radius": "8px",
-                        "background-color": "var(--color-primary)"
-                      },
-                      "mobile": {
-                        "padding": "8px 16px",
-                        "font-size": "0.9rem"
-                      },
-                      "tablet": {
-                        "padding": "10px 20px",
-                        "font-size": "0.95rem"
-                      }
-                    }
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "id": "section-f34263f2-6c29-4940-8f1d-387418710dce",
-          "type": "category-with-products",
-          "image": "category-with-products.png",
-          "pageId": "home",
-          "styles": {
-            "pc": {
-              "width": "100%",
-              "padding": "10px 20px",
-              "background-color": "#f3f4f6"
-            },
-            "mobile": {
-              "padding": "30px 12px"
-            },
-            "tablet": {
-              "padding": "40px 16px"
-            }
-          },
-          "container": {
-            "id": "el-2e724ae2-27e0-4d9a-84dc-a27662a3d9c8",
-            "tag": "div",
-            "styles": {
-              "pc": {
-                "margin": "0 auto",
-                "padding": "10px 20px",
-                "max-width": "1200px"
-              },
-              "mobile": {
-                "padding": "30px 12px"
-              },
-              "tablet": {
-                "padding": "40px 16px"
-              }
-            },
-            "children": [
-              {
-                "id": "el-5abe08c1-597a-4392-85c9-36c435f12624",
-                "tag": "category-with-products",
-                "styles": {
-                  "pc": {
-                    "width": "100%",
-                    "background": "#f3f4f6"
-                  },
-                  "mobile": {
-                    "width": "100%"
-                  },
-                  "tablet": {
-                    "width": "100%"
-                  }
                 },
-                "content": [
-                  {
-                    "key": "categoryId",
-                    "name": "Category Id",
-                    "value": 1,
-                    "categoryId": "210"
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "id": "section-0b58ac6f-33e1-4000-a9db-33c8907b0ab4",
-          "type": "category-with-products",
-          "image": "category-with-products.png",
-          "pageId": "home",
-          "styles": {
-            "pc": {
-              "width": "100%",
-              "padding": "10px 20px",
-              "background-color": "#f3f4f6"
-            },
-            "mobile": {
-              "padding": "30px 12px"
-            },
-            "tablet": {
-              "padding": "40px 16px"
-            }
-          },
-          "container": {
-            "id": "el-6be943d0-0538-411c-96d0-966aad1b386b",
-            "tag": "div",
-            "styles": {
-              "pc": {
-                "margin": "0 auto",
-                "padding": "10px 20px",
-                "max-width": "1200px"
-              },
-              "mobile": {
-                "padding": "30px 12px"
-              },
-              "tablet": {
-                "padding": "40px 16px"
-              }
-            },
-            "children": [
-              {
-                "id": "el-a19534c6-ba56-4be2-8714-8ad52eed3b22",
-                "tag": "category-with-products",
-                "styles": {
-                  "pc": {
-                    "width": "100%",
-                    "background": "#f3f4f6"
-                  },
-                  "mobile": {
-                    "width": "100%"
-                  },
-                  "tablet": {
-                    "width": "100%"
-                  }
+                {
+                    "id": "section-7dde2267-8463-4467-b0d5-2999e374d4f7",
+                    "type": "feature-intro1",
+                    "image": "feature-intro1.png",
+                    "pageId": "home",
+                    "styles": {
+                        "pc": {
+                            "width": "100%",
+                            "padding": "20px 20px",
+                            "background-color": "#f3f4f6"
+                        },
+                        "mobile": {
+                            "padding": "30px 12px"
+                        },
+                        "tablet": {
+                            "padding": "40px 16px"
+                        }
+                    },
+                    "container": {
+                        "id": "el-7b5addf0-071b-44e1-a368-0282fdef3fc7",
+                        "tag": "div",
+                        "styles": {
+                            "pc": {
+                                "margin": "0 auto",
+                                "padding": "20px 20px",
+                                "max-width": "1200px"
+                            },
+                            "mobile": {
+                                "padding": "30px 12px"
+                            },
+                            "tablet": {
+                                "padding": "40px 16px"
+                            }
+                        },
+                        "children": [
+                            {
+                                "id": "el-a3e4c5f6-49a8-4758-807f-0d499abea952",
+                                "tag": "div",
+                                "styles": {
+                                    "pc": {
+                                        "gap": "20px",
+                                        "margin": "0 auto",
+                                        "display": "flex",
+                                        "padding": "60px 20px",
+                                        "max-width": "900px",
+                                        "text-align": "center",
+                                        "align-items": "center",
+                                        "flex-direction": "column"
+                                    },
+                                    "mobile": {
+                                        "padding": "30px 12px"
+                                    },
+                                    "tablet": {
+                                        "padding": "40px 16px"
+                                    }
+                                },
+                                "children": [
+                                    {
+                                        "id": "el-109423f8-da12-4ab5-9d84-275be7930e48",
+                                        "tag": "h2",
+                                        "value": "About Viviid\n",
+                                        "styles": {
+                                            "pc": {
+                                                "color": "#111827",
+                                                "font-size": "2rem",
+                                                "font-weight": "800"
+                                            },
+                                            "mobile": {
+                                                "font-size": "2rem"
+                                            },
+                                            "tablet": {
+                                                "font-size": "2.5rem"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "id": "el-a8767825-7759-4222-9fa3-077f4e15be52",
+                                        "tag": "p",
+                                        "value": "We\u2019re your all-in-one partner for printing, branding, and workwear. From custom apparel to premium gifts, we help businesses stand out\u2014fast, reliable, and trusted nationwide.",
+                                        "styles": {
+                                            "pc": {
+                                                "color": "#4B5563",
+                                                "font-size": ".85rem",
+                                                "line-height": "1.6"
+                                            },
+                                            "mobile": {
+                                                "font-size": "0.95rem"
+                                            },
+                                            "tablet": {
+                                                "font-size": "1rem"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "id": "el-a9c7aea2-0ad4-4a1d-8095-619479c59f97",
+                                        "tag": "button",
+                                        "link": "\/home\/about-us",
+                                        "value": "Read More",
+                                        "styles": {
+                                            "pc": {
+                                                "color": "#000000",
+                                                "padding": "12px 24px",
+                                                "font-size": "1rem",
+                                                "border-radius": "8px",
+                                                "background-color": "#e9ea2f"
+                                            },
+                                            "mobile": {
+                                                "padding": "8px 16px",
+                                                "font-size": "0.9rem"
+                                            },
+                                            "tablet": {
+                                                "padding": "10px 20px",
+                                                "font-size": "0.95rem"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 },
-                "content": [
-                  {
-                    "key": "categoryId",
-                    "name": "Category Id",
-                    "value": 1,
-                    "categoryId": "211"
-                  }
-                ]
-              }
+                {
+                    "id": "section-4a383165-0936-478b-8747-e992792b1779",
+                    "type": "category-with-products",
+                    "image": "category-with-products.png",
+                    "pageId": "home",
+                    "styles": {
+                        "pc": {
+                            "width": "100%",
+                            "padding": "0px 20px",
+                            "background-color": "#f3f4f6"
+                        },
+                        "mobile": {
+                            "padding": "30px 12px"
+                        },
+                        "tablet": {
+                            "padding": "40px 16px"
+                        }
+                    },
+                    "container": {
+                        "id": "el-889965b3-2627-4d68-936c-c9b1392da33b",
+                        "tag": "div",
+                        "styles": {
+                            "pc": {
+                                "margin": "0 auto",
+                                "padding": "10px 20px",
+                                "max-width": "1200px"
+                            },
+                            "mobile": {
+                                "padding": "30px 12px"
+                            },
+                            "tablet": {
+                                "padding": "40px 16px"
+                            }
+                        },
+                        "children": [
+                            {
+                                "id": "el-8e21ebd1-dd92-4906-92bc-584485d28965",
+                                "tag": "category-with-products",
+                                "styles": {
+                                    "pc": {
+                                        "width": "100%",
+                                        "background": "#f3f4f6"
+                                    },
+                                    "mobile": {
+                                        "width": "100%"
+                                    },
+                                    "tablet": {
+                                        "width": "100%"
+                                    }
+                                },
+                                "content": [
+                                    {
+                                        "key": "categoryId",
+                                        "name": "Category Id",
+                                        "value": 1,
+                                        "categoryId": "197"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "section-6bd47798-a9e6-46cd-b90f-33a589186a37",
+                    "type": "category-with-products",
+                    "image": "category-with-products.png",
+                    "pageId": "home",
+                    "styles": {
+                        "pc": {
+                            "width": "100%",
+                            "padding": "0px 20px",
+                            "background-color": "#f3f4f6"
+                        },
+                        "mobile": {
+                            "padding": "30px 12px"
+                        },
+                        "tablet": {
+                            "padding": "40px 16px"
+                        }
+                    },
+                    "container": {
+                        "id": "el-cc87bf41-1532-4619-bd91-7526a1fbdd94",
+                        "tag": "div",
+                        "styles": {
+                            "pc": {
+                                "margin": "0 auto",
+                                "padding": "60px 20px",
+                                "max-width": "1200px"
+                            },
+                            "mobile": {
+                                "padding": "30px 12px"
+                            },
+                            "tablet": {
+                                "padding": "40px 16px"
+                            }
+                        },
+                        "children": [
+                            {
+                                "id": "el-f4f67320-1464-4dc0-9d5d-ab87d72e2d61",
+                                "tag": "category-with-products",
+                                "styles": {
+                                    "pc": {
+                                        "width": "100%",
+                                        "background": "#f3f4f6"
+                                    },
+                                    "mobile": {
+                                        "width": "100%"
+                                    },
+                                    "tablet": {
+                                        "width": "100%"
+                                    }
+                                },
+                                "content": [
+                                    {
+                                        "key": "categoryId",
+                                        "name": "Category Id",
+                                        "value": 1,
+                                        "categoryId": "198"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "section-8319341d-7c22-484c-932b-a6764533fb63",
+                    "type": "faq",
+                    "image": "faq.png",
+                    "pageId": "home",
+                    "styles": {
+                        "pc": {
+                            "width": "100%",
+                            "padding": "60px 20px",
+                            "background-color": "#f3f4f6"
+                        },
+                        "mobile": {
+                            "padding": "30px 12px"
+                        },
+                        "tablet": {
+                            "padding": "40px 16px"
+                        }
+                    },
+                    "container": {
+                        "id": "el-f4ded974-ab07-42b2-8d67-931a67ccb9d7",
+                        "tag": "div",
+                        "styles": {
+                            "pc": {
+                                "margin": "0 auto",
+                                "padding": "60px 20px",
+                                "max-width": "1200px"
+                            },
+                            "mobile": {
+                                "padding": "30px 12px"
+                            },
+                            "tablet": {
+                                "padding": "40px 16px"
+                            }
+                        },
+                        "children": [
+                            {
+                                "id": "el-8f2b3798-fcfd-46e1-9290-bda1a4190a81",
+                                "tag": "h4",
+                                "value": "Frequently Asked Questions",
+                                "styles": {
+                                    "pc": {
+                                        "color": "#111827",
+                                        "font-size": "1.5rem",
+                                        "text-align": "center",
+                                        "font-weight": "600"
+                                    },
+                                    "mobile": {
+                                        "font-size": "1.75rem"
+                                    },
+                                    "tablet": {
+                                        "font-size": "2rem"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "el-ab303e67-ebf0-4b1f-83b0-cb40ec131dbf",
+                                "tag": "p",
+                                "value": "Find answers to the most common questions we get asked.",
+                                "styles": {
+                                    "pc": {
+                                        "color": "#4B5563",
+                                        "font-size": ".85rem",
+                                        "text-align": "center",
+                                        "margin-bottom": "20px"
+                                    },
+                                    "mobile": {
+                                        "font-size": "0.95rem"
+                                    },
+                                    "tablet": {
+                                        "font-size": "1rem"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "el-c2c60fe9-6799-4f6d-8b25-85cc2c6a5882",
+                                "tag": "accordion",
+                                "styles": {
+                                    "pc": {
+                                        "width": "100%",
+                                        "margin": "4rem  auto",
+                                        "max-width": "500px"
+                                    },
+                                    "mobile": [],
+                                    "tablet": []
+                                },
+                                "content": [
+                                    {
+                                        "answer": "You can launch in under 10 minutes with our intuitive editor.",
+                                        "question": "How long does it take to set up my store?"
+                                    },
+                                    {
+                                        "answer": "Yes! You can easily connect your custom domain from your dashboard.",
+                                        "question": "Can I use my own domain?"
+                                    },
+                                    {
+                                        "answer": "Absolutely. You can add sizes, colors, and more \u2014 all customizable.",
+                                        "question": "Is there support for product variations?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "section-de5982ab-5ca8-468f-b65b-40f6eb12fc13",
+                    "type": "feature-intro1",
+                    "image": "feature-intro1.png",
+                    "pageId": "home",
+                    "styles": {
+                        "pc": {
+                            "width": "100%",
+                            "padding": "60px 20px",
+                            "background-color": "#f3f4f6"
+                        },
+                        "mobile": {
+                            "padding": "30px 12px"
+                        },
+                        "tablet": {
+                            "padding": "40px 16px"
+                        }
+                    },
+                    "container": {
+                        "id": "el-39f051ff-1da0-46a7-aa5d-2adff20374ed",
+                        "tag": "div",
+                        "styles": {
+                            "pc": {
+                                "margin": "0 auto",
+                                "padding": "60px 20px",
+                                "max-width": "1200px",
+                                "border-radius": "12px",
+                                "background-color": "#000000"
+                            },
+                            "mobile": {
+                                "padding": "30px 12px"
+                            },
+                            "tablet": {
+                                "padding": "40px 16px"
+                            }
+                        },
+                        "children": [
+                            {
+                                "id": "el-fe0f1318-8824-40bf-9bcc-5761ed63a432",
+                                "tag": "div",
+                                "styles": {
+                                    "pc": {
+                                        "gap": "20px",
+                                        "margin": "0 auto",
+                                        "display": "flex",
+                                        "padding": "60px 20px",
+                                        "max-width": "900px",
+                                        "text-align": "center",
+                                        "align-items": "center",
+                                        "border-radius": "12px",
+                                        "flex-direction": "column"
+                                    },
+                                    "mobile": {
+                                        "padding": "30px 12px"
+                                    },
+                                    "tablet": {
+                                        "padding": "40px 16px"
+                                    }
+                                },
+                                "children": [
+                                    {
+                                        "id": "el-9d6853e9-1f3d-4ac9-9fac-6d6c0550c730",
+                                        "tag": "h4",
+                                        "value": "Ready to Elevate Your Brand?\n",
+                                        "styles": {
+                                            "pc": {
+                                                "color": "#ffffff",
+                                                "font-size": "1.5rem",
+                                                "font-weight": "700"
+                                            },
+                                            "mobile": {
+                                                "font-size": "2rem"
+                                            },
+                                            "tablet": {
+                                                "font-size": "2.5rem"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "id": "el-f6722a3c-196f-4b74-aa8e-2140a923e753",
+                                        "tag": "p",
+                                        "value": "Get started now \u2013 order online, request a quote, or contact our team!\n\n",
+                                        "styles": {
+                                            "pc": {
+                                                "color": "#ffffff",
+                                                "font-size": ".85rem",
+                                                "line-height": "1.6"
+                                            },
+                                            "mobile": {
+                                                "font-size": "0.95rem"
+                                            },
+                                            "tablet": {
+                                                "font-size": "1rem"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "id": "el-05e30130-97fd-4b70-8d06-d9264f613b4e",
+                                        "tag": "button",
+                                        "link": "\/home\/contact",
+                                        "value": "Get a quote",
+                                        "styles": {
+                                            "pc": {
+                                                "color": "#000000",
+                                                "padding": "12px 24px",
+                                                "font-size": "1rem",
+                                                "font-weight": "400",
+                                                "border-radius": "8px",
+                                                "background-color": "var(--color-primary)"
+                                            },
+                                            "mobile": {
+                                                "padding": "8px 16px",
+                                                "font-size": "0.9rem"
+                                            },
+                                            "tablet": {
+                                                "padding": "10px 20px",
+                                                "font-size": "0.95rem"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "section-8d1da6c4-311b-4c70-ba37-7789e289b404",
+                    "type": "testimonials",
+                    "image": "testimonials.png",
+                    "pageId": "home",
+                    "styles": {
+                        "pc": {
+                            "width": "100%",
+                            "padding": "60px 20px",
+                            "background-color": "#f3f4f6"
+                        },
+                        "mobile": {
+                            "padding": "30px 12px"
+                        },
+                        "tablet": {
+                            "padding": "40px 16px"
+                        }
+                    },
+                    "container": {
+                        "id": "el-7cb90917-5555-468a-96a5-333bdcb5b3f3",
+                        "tag": "div",
+                        "styles": {
+                            "pc": {
+                                "margin": "0 auto",
+                                "padding": "60px 20px",
+                                "max-width": "1200px"
+                            },
+                            "mobile": {
+                                "padding": "30px 12px"
+                            },
+                            "tablet": {
+                                "padding": "40px 16px"
+                            }
+                        },
+                        "children": [
+                            {
+                                "id": "el-d99a39cd-1de2-4a86-8bb0-d2dd87f59da9",
+                                "tag": "h2",
+                                "value": "What Our Clients Say",
+                                "styles": {
+                                    "pc": {
+                                        "color": "#111827",
+                                        "font-size": "1.5rem",
+                                        "text-align": "center",
+                                        "font-weight": "600"
+                                    },
+                                    "mobile": {
+                                        "font-size": "1.75rem"
+                                    },
+                                    "tablet": {
+                                        "font-size": "2rem"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "el-bcc65f18-e58d-4da2-b1ac-218b0ec783cd",
+                                "tag": "p",
+                                "value": "Real feedback from the businesses and entrepreneurs using Tybo Store.",
+                                "styles": {
+                                    "pc": {
+                                        "color": "#4B5563",
+                                        "font-size": ".85rem",
+                                        "text-align": "center",
+                                        "margin-bottom": "20px"
+                                    },
+                                    "mobile": {
+                                        "font-size": "0.95rem"
+                                    },
+                                    "tablet": {
+                                        "font-size": "1rem"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "el-6c358980-c4a4-4385-ad55-06a405ea0a6c",
+                                "tag": "ul",
+                                "styles": {
+                                    "pc": {
+                                        "gap": "32px",
+                                        "display": "grid",
+                                        "padding": 0,
+                                        "list-style": "none",
+                                        "grid-template-columns": "repeat(auto-fit, minmax(240px, 1fr))"
+                                    },
+                                    "mobile": {
+                                        "gap": "20px",
+                                        "grid-template-columns": "1fr"
+                                    },
+                                    "tablet": {
+                                        "gap": "24px",
+                                        "grid-template-columns": "repeat(auto-fit, minmax(200px, 1fr))"
+                                    }
+                                },
+                                "children": [
+                                    {
+                                        "id": "el-80dbb7c7-7c6c-4250-8213-f6f677689df6",
+                                        "tag": "li",
+                                        "styles": {
+                                            "pc": {
+                                                "gap": "8px",
+                                                "display": "flex",
+                                                "padding": "24px",
+                                                "background": "#fff",
+                                                "box-shadow": "0 2px 8px rgba(0,0,0,0.08)",
+                                                "align-items": "flex-start",
+                                                "border-radius": "12px",
+                                                "flex-direction": "column",
+                                                "justify-content": "flex-start"
+                                            },
+                                            "mobile": {
+                                                "padding": "16px"
+                                            },
+                                            "tablet": {
+                                                "padding": "20px"
+                                            }
+                                        },
+                                        "children": [
+                                            {
+                                                "id": "el-d2410a84-b5a2-43b0-97ec-e08e9798794f",
+                                                "tag": "img",
+                                                "value": "https:\/\/randomuser.me\/api\/portraits\/men\/32.jpg",
+                                                "styles": {
+                                                    "pc": {
+                                                        "width": "40px",
+                                                        "height": "40px",
+                                                        "object-fit": "cover",
+                                                        "border-radius": "9999px"
+                                                    },
+                                                    "mobile": {
+                                                        "width": "100%",
+                                                        "border-radius": "12px"
+                                                    },
+                                                    "tablet": {
+                                                        "width": "100%",
+                                                        "border-radius": "12px"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "id": "el-b8453d6d-50a1-4a9b-baf1-cb2d7ac1824b",
+                                                "tag": "h4",
+                                                "value": "John Doe",
+                                                "styles": {
+                                                    "pc": {
+                                                        "color": "#111827",
+                                                        "font-size": "1rem",
+                                                        "font-weight": "600"
+                                                    },
+                                                    "mobile": {
+                                                        "font-size": "1.125rem"
+                                                    },
+                                                    "tablet": {
+                                                        "font-size": "1.25rem"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "id": "el-ce8d61f0-a786-41e1-aca5-91f0f217af64",
+                                                "tag": "h5",
+                                                "value": "Founder, HomeBuild Co.",
+                                                "styles": {
+                                                    "pc": {
+                                                        "color": "#6B7280",
+                                                        "font-size": "0.95rem"
+                                                    },
+                                                    "mobile": {
+                                                        "font-size": "1rem"
+                                                    },
+                                                    "tablet": {
+                                                        "font-size": "1.125rem"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "id": "el-2d44b491-bc83-4642-b84e-1a739ef038cc",
+                                                "tag": "p",
+                                                "value": "\"Viviid made branding my business easy and affordable. The quality is outstanding, and service is always quick.\"",
+                                                "styles": {
+                                                    "pc": {
+                                                        "color": "#4B5563",
+                                                        "font-size": ".85rem"
+                                                    },
+                                                    "mobile": {
+                                                        "font-size": "0.95rem"
+                                                    },
+                                                    "tablet": {
+                                                        "font-size": "1rem"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "el-9334d3ea-75cd-472a-b6e6-fc19c169dbbb",
+                                        "tag": "li",
+                                        "styles": {
+                                            "pc": {
+                                                "gap": "8px",
+                                                "display": "flex",
+                                                "padding": "24px",
+                                                "background": "#fff",
+                                                "box-shadow": "0 2px 8px rgba(0,0,0,0.08)",
+                                                "align-items": "flex-start",
+                                                "border-radius": "12px",
+                                                "flex-direction": "column",
+                                                "justify-content": "flex-start"
+                                            },
+                                            "mobile": {
+                                                "padding": "16px"
+                                            },
+                                            "tablet": {
+                                                "padding": "20px"
+                                            }
+                                        },
+                                        "children": [
+                                            {
+                                                "id": "el-81b7760b-8099-4137-893f-dae000ef42ae",
+                                                "tag": "img",
+                                                "value": "https:\/\/randomuser.me\/api\/portraits\/women\/44.jpg",
+                                                "styles": {
+                                                    "pc": {
+                                                        "width": "40px",
+                                                        "height": "40px",
+                                                        "object-fit": "cover",
+                                                        "border-radius": "9999px"
+                                                    },
+                                                    "mobile": {
+                                                        "width": "100%",
+                                                        "border-radius": "12px"
+                                                    },
+                                                    "tablet": {
+                                                        "width": "100%",
+                                                        "border-radius": "12px"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "id": "el-ec6bdc67-18fa-4fa0-b442-d1300f2624ae",
+                                                "tag": "h4",
+                                                "value": "Jane Smith",
+                                                "styles": {
+                                                    "pc": {
+                                                        "color": "#111827",
+                                                        "font-size": "1rem",
+                                                        "font-weight": "600"
+                                                    },
+                                                    "mobile": {
+                                                        "font-size": "1.125rem"
+                                                    },
+                                                    "tablet": {
+                                                        "font-size": "1.25rem"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "id": "el-e5bd4ba0-2f3b-4f3d-b0f9-d4c258fa4447",
+                                                "tag": "h5",
+                                                "value": "Retail Manager, Style Studio",
+                                                "styles": {
+                                                    "pc": {
+                                                        "color": "#6B7280",
+                                                        "font-size": "0.95rem"
+                                                    },
+                                                    "mobile": {
+                                                        "font-size": "1rem"
+                                                    },
+                                                    "tablet": {
+                                                        "font-size": "1.125rem"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "id": "el-7f852450-1f36-4375-83da-aa7a04da890c",
+                                                "tag": "p",
+                                                "value": "\"Ordered safety gear for our team and everything arrived on time and perfectly branded. Highly recommend!\"",
+                                                "styles": {
+                                                    "pc": {
+                                                        "color": "#4B5563",
+                                                        "font-size": ".85rem"
+                                                    },
+                                                    "mobile": {
+                                                        "font-size": "0.95rem"
+                                                    },
+                                                    "tablet": {
+                                                        "font-size": "1rem"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "el-5d927f88-4bf0-456e-afc4-938b713d14b0",
+                                        "tag": "li",
+                                        "styles": {
+                                            "pc": {
+                                                "gap": "8px",
+                                                "display": "flex",
+                                                "padding": "24px",
+                                                "background": "#fff",
+                                                "box-shadow": "0 2px 8px rgba(0,0,0,0.08)",
+                                                "align-items": "flex-start",
+                                                "border-radius": "12px",
+                                                "flex-direction": "column",
+                                                "justify-content": "flex-start"
+                                            },
+                                            "mobile": {
+                                                "padding": "16px"
+                                            },
+                                            "tablet": {
+                                                "padding": "20px"
+                                            }
+                                        },
+                                        "children": [
+                                            {
+                                                "id": "el-13bd703f-af7b-424f-96f2-94ab69bcebf1",
+                                                "tag": "img",
+                                                "value": "https:\/\/randomuser.me\/api\/portraits\/men\/85.jpg",
+                                                "styles": {
+                                                    "pc": {
+                                                        "width": "40px",
+                                                        "height": "40px",
+                                                        "object-fit": "cover",
+                                                        "border-radius": "9999px"
+                                                    },
+                                                    "mobile": {
+                                                        "width": "100%",
+                                                        "border-radius": "12px"
+                                                    },
+                                                    "tablet": {
+                                                        "width": "100%",
+                                                        "border-radius": "12px"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "id": "el-c002f6bd-7d63-4815-a92b-8bc0f6b2444f",
+                                                "tag": "h4",
+                                                "value": "Michael Brown",
+                                                "styles": {
+                                                    "pc": {
+                                                        "color": "#111827",
+                                                        "font-size": "1rem",
+                                                        "font-weight": "600"
+                                                    },
+                                                    "mobile": {
+                                                        "font-size": "1.125rem"
+                                                    },
+                                                    "tablet": {
+                                                        "font-size": "1.25rem"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "id": "el-00f9f876-d78b-4220-9c26-325fe82fa009",
+                                                "tag": "h5",
+                                                "value": "Director, UrbanScape Developments",
+                                                "styles": {
+                                                    "pc": {
+                                                        "color": "#6B7280",
+                                                        "font-size": "0.95rem"
+                                                    },
+                                                    "mobile": {
+                                                        "font-size": "1rem"
+                                                    },
+                                                    "tablet": {
+                                                        "font-size": "1.125rem"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "id": "el-7d3d1a02-fb6a-4413-b7a5-f7951937e62e",
+                                                "tag": "p",
+                                                "value": "\"Super impressed with their customer service and fast turnaround. The print quality is the best we\u2019ve seen.\"",
+                                                "styles": {
+                                                    "pc": {
+                                                        "color": "#4B5563",
+                                                        "font-size": ".85rem"
+                                                    },
+                                                    "mobile": {
+                                                        "font-size": "0.95rem"
+                                                    },
+                                                    "tablet": {
+                                                        "font-size": "1rem"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
             ]
-          }
-        }
-      ]
-    },
-    "company_id": 2,
-    "website_id": null,
-    "created_at": "2025-06-28 04:59:14",
-    "created_by": null,
-    "updated_at": "2025-07-01 04:12:16",
-    "updated_by": null,
-    "status_id": 1
-  }
+        },
+        "company_id": 1,
+        "website_id": null,
+        "created_at": "2025-06-22 06:22:12",
+        "created_by": null,
+        "updated_at": "2025-07-03 10:49:59",
+        "updated_by": null,
+        "status_id": 1
+    }
 ]

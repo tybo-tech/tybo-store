@@ -1,0 +1,341 @@
+[
+  {
+    "id": 101,
+    "collection_id": "page",
+    "parent_id": "contact-us",
+    "data": {
+      "sections": [
+        {
+          "id": "section-contact-hero",
+          "type": "contact-hero",
+          "image": "contact-hero.png",
+          "pageId": "contact-us",
+          "styles": {
+            "pc": {
+              "width": "100%",
+              "padding": "60px 20px",
+              "background-color": "var(--color-surface)",
+              "border-bottom": "1px solid var(--color-border)"
+            },
+            "mobile": {
+              "padding": "40px 12px"
+            }
+          },
+          "container": {
+            "id": "el-contact-hero-container",
+            "tag": "div",
+            "styles": {
+              "pc": {
+                "margin": "0 auto",
+                "max-width": "800px",
+                "text-align": "center"
+              }
+            },
+            "children": [
+              {
+                "id": "el-contact-hero-title",
+                "tag": "h1",
+                "value": "Get In Touch",
+                "styles": {
+                  "pc": {
+                    "font-size": "3rem",
+                    "font-weight": "700",
+                    "margin-bottom": "1rem",
+                    "color": "var(--color-text)"
+                  },
+                  "mobile": {
+                    "font-size": "2rem"
+                  }
+                }
+              },
+              {
+                "id": "el-contact-hero-subtitle",
+                "tag": "p",
+                "value": "We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+                "styles": {
+                  "pc": {
+                    "font-size": "1.25rem",
+                    "color": "var(--color-muted)",
+                    "margin-bottom": "2rem"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "section-contact-info",
+          "type": "contact-info",
+          "image": "contact-info.png",
+          "pageId": "contact-us",
+          "styles": {
+            "pc": {
+              "width": "100%",
+              "padding": "80px 20px",
+              "background-color": "var(--color-background)"
+            }
+          },
+          "container": {
+            "id": "el-contact-info-container",
+            "tag": "div",
+            "styles": {
+              "pc": {
+                "margin": "0 auto",
+                "max-width": "1200px",
+                "display": "grid",
+                "grid-template-columns": "1fr 1fr",
+                "gap": "4rem"
+              },
+              "mobile": {
+                "grid-template-columns": "1fr",
+                "gap": "2rem"
+              }
+            },
+            "children": [
+              {
+                "id": "el-contact-info-left",
+                "tag": "div",
+                "children": [
+                  {
+                    "id": "el-contact-info-title",
+                    "tag": "h2",
+                    "value": "Contact Information",
+                    "styles": {
+                      "pc": {
+                        "font-size": "2rem",
+                        "font-weight": "600",
+                        "margin-bottom": "2rem",
+                        "color": "var(--color-text)"
+                      }
+                    }
+                  },
+                  {
+                    "id": "el-contact-info-list",
+                    "tag": "div",
+                    "styles": {
+                      "pc": {
+                        "display": "flex",
+                        "flex-direction": "column",
+                        "gap": "1.5rem"
+                      }
+                    },
+                    "children": [
+                      {
+                        "id": "el-contact-address",
+                        "tag": "div",
+                        "styles": {
+                          "pc": {
+                            "display": "flex",
+                            "align-items": "flex-start",
+                            "gap": "1rem"
+                          }
+                        },
+                        "children": [
+                          {
+                            "id": "el-contact-address-icon",
+                            "tag": "div",
+                            "value": "📍",
+                            "styles": {
+                              "pc": {
+                                "font-size": "1.5rem",
+                                "margin-top": "0.25rem"
+                              }
+                            }
+                          },
+                          {
+                            "id": "el-contact-address-text",
+                            "tag": "div",
+                            "children": [
+                              {
+                                "id": "el-contact-address-label",
+                                "tag": "h3",
+                                "value": "Address",
+                                "styles": {
+                                  "pc": {
+                                    "font-weight": "600",
+                                    "margin-bottom": "0.5rem",
+                                    "color": "var(--color-text)"
+                                  }
+                                }
+                              },
+                              {
+                                "id": "el-contact-address-value",
+                                "tag": "p",
+                                "value": "The South, South Africa",
+                                "styles": {
+                                  "pc": {
+                                    "color": "var(--color-muted)",
+                                    "line-height": "1.5"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "el-contact-email",
+                        "tag": "div",
+                        "styles": {
+                          "pc": {
+                            "display": "flex",
+                            "align-items": "flex-start",
+                            "gap": "1rem"
+                          }
+                        },
+                        "children": [
+                          {
+                            "id": "el-contact-email-icon",
+                            "tag": "div",
+                            "value": "✉️",
+                            "styles": {
+                              "pc": {
+                                "font-size": "1.5rem",
+                                "margin-top": "0.25rem"
+                              }
+                            }
+                          },
+                          {
+                            "id": "el-contact-email-text",
+                            "tag": "div",
+                            "children": [
+                              {
+                                "id": "el-contact-email-label",
+                                "tag": "h3",
+                                "value": "Email",
+                                "styles": {
+                                  "pc": {
+                                    "font-weight": "600",
+                                    "margin-bottom": "0.5rem",
+                                    "color": "var(--color-text)"
+                                  }
+                                }
+                              },
+                              {
+                                "id": "el-contact-email-value",
+                                "tag": "p",
+                                "value": "hello@mayandaempire.com",
+                                "styles": {
+                                  "pc": {
+                                    "color": "var(--color-muted)",
+                                    "line-height": "1.5"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "el-contact-phone",
+                        "tag": "div",
+                        "styles": {
+                          "pc": {
+                            "display": "flex",
+                            "align-items": "flex-start",
+                            "gap": "1rem"
+                          }
+                        },
+                        "children": [
+                          {
+                            "id": "el-contact-phone-icon",
+                            "tag": "div",
+                            "value": "📞",
+                            "styles": {
+                              "pc": {
+                                "font-size": "1.5rem",
+                                "margin-top": "0.25rem"
+                              }
+                            }
+                          },
+                          {
+                            "id": "el-contact-phone-text",
+                            "tag": "div",
+                            "children": [
+                              {
+                                "id": "el-contact-phone-label",
+                                "tag": "h3",
+                                "value": "Phone",
+                                "styles": {
+                                  "pc": {
+                                    "font-weight": "600",
+                                    "margin-bottom": "0.5rem",
+                                    "color": "var(--color-text)"
+                                  }
+                                }
+                              },
+                              {
+                                "id": "el-contact-phone-value",
+                                "tag": "p",
+                                "value": "+27 123 456 789",
+                                "styles": {
+                                  "pc": {
+                                    "color": "var(--color-muted)",
+                                    "line-height": "1.5"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "el-contact-form-container",
+                "tag": "div",
+                "styles": {
+                  "pc": {
+                    "background-color": "var(--color-surface)",
+                    "padding": "2rem",
+                    "border-radius": "12px",
+                    "border": "1px solid var(--color-border)"
+                  }
+                },
+                "children": [
+                  {
+                    "id": "el-contact-form-title",
+                    "tag": "h3",
+                    "value": "Send us a message",
+                    "styles": {
+                      "pc": {
+                        "font-size": "1.5rem",
+                        "font-weight": "600",
+                        "margin-bottom": "1.5rem",
+                        "color": "var(--color-text)"
+                      }
+                    }
+                  },
+                  {
+                    "id": "el-contact-form-note",
+                    "tag": "p",
+                    "value": "Contact form would be implemented here with proper form fields and validation.",
+                    "styles": {
+                      "pc": {
+                        "color": "var(--color-muted)",
+                        "text-align": "center",
+                        "padding": "3rem 1rem",
+                        "background-color": "var(--color-background)",
+                        "border-radius": "8px",
+                        "border": "2px dashed var(--color-border)"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "company_id": 2,
+    "website_id": null,
+    "created_at": "2025-08-30 10:30:00",
+    "created_by": null,
+    "updated_at": "2025-08-30 10:30:00",
+    "updated_by": null,
+    "status_id": 1
+  }
+]
