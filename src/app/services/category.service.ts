@@ -33,6 +33,14 @@ export class CategoryService extends BaseApiService {
   }
 
   /**
+   * Get category with products and trail by ID
+   * Returns category details including products array and breadcrumb trail
+   */
+  getCategoryWithProducts(id: number): Observable<any> {
+    return this.get<any>('/categories/get.php', { id });
+  }
+
+  /**
    * Get featured categories for the current company
    */
   getFeaturedCategories(): Observable<Category[]> {

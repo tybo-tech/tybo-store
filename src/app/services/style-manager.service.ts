@@ -11,18 +11,30 @@ export interface IStyleDM {
   }
 }
 
+export interface IThemeColor {
+  name: string;
+  value: string;
+  variable: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class StyleManagerService {
   private styleElId = 'dynamic-styles';
 
   // scopeSelector optionally prefixes each selector (e.g., '#page-home') for page-scoped CSS
-  generateFromSections(sections: PageSection[], fonts: IFont[] = [], scopeSelector?: string): void {
+  generateFromSections(sections: PageSection[], fonts: IFont[] = [], scopeSelector?: string, themeColors?: IThemeColor[]): void {
     if (!sections || sections.length === 0) {
       this.clear();
       return;
     }
 
     let pc = this.renderFonts(fonts);
+
+    // Add CSS variables from theme colors
+    if (themeColors && themeColors.length > 0) {
+      pc += this.renderThemeVariables(themeColors, scopeSelector);
+    }
+
     let tablet = '';
     let mobile = '';
 
@@ -57,13 +69,19 @@ export class StyleManagerService {
   }
 
   // Optional: accept a DM array directly (same shape as your example)
-  generateFromDesignMap(styles: IStyleDM[], fonts: IFont[] = [], scopeSelector?: string): void {
+  generateFromDesignMap(styles: IStyleDM[], fonts: IFont[] = [], scopeSelector?: string, themeColors?: IThemeColor[]): void {
     if (!styles || styles.length === 0) {
       this.clear();
       return;
     }
 
     let pc = this.renderFonts(fonts);
+
+    // Add CSS variables from theme colors
+    if (themeColors && themeColors.length > 0) {
+      pc += this.renderThemeVariables(themeColors, scopeSelector);
+    }
+
     let tablet = '';
     let mobile = '';
 
@@ -89,6 +107,23 @@ export class StyleManagerService {
       if (font?.url) importString += `@import url(${font.url});`;
     }
     return `\n${importString}\n`;
+  }
+
+  private renderThemeVariables(themeColors: IThemeColor[], scopeSelector?: string): string {
+    if (!themeColors || themeColors.length === 0) return '';
+
+    // Use scoped selector or :root for global variables
+    const selector = scopeSelector || ':root';
+
+    let css = `${selector} {`;
+    for (const color of themeColors) {
+      if (color.variable && color.value) {
+        css += `${color.variable}: ${color.value};`;
+      }
+    }
+    css += '}';
+
+    return css;
   }
 
   private walkElement(

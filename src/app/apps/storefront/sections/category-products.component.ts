@@ -2,6 +2,7 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges, computed, signal, i
 import { CommonModule } from '@angular/common';
 import { PageSection } from '../../../models/website.interface';
 import { ProductService } from '../../../services/product.service';
+import { CategoryService } from '../../../services/category.service';
 import { ContextService } from '../../../services/context.service';
 
 @Component({
@@ -197,6 +198,7 @@ export class CategoryProductsComponent implements OnInit, OnChanges {
   @Input() section!: PageSection;
 
   private productService = inject(ProductService);
+  private categoryService = inject(CategoryService);
   private contextService = inject(ContextService);
 
   defaultProductImage = 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop';

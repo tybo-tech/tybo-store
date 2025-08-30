@@ -1,7 +1,7 @@
 import { Component, Input, inject, signal, computed, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WebsiteService } from '../services/website.service';
-import { StyleManagerService } from '../services/style-manager.service';
+import { StyleManagerService, IThemeColor } from '../services/style-manager.service';
 import { ContextService } from '../services/context.service';
 import { DynamicElementComponent } from './dynamic-element-new.component';
 import { WebsitePageData, PageSection, PageElement } from '../models/website.interface';
@@ -321,7 +321,12 @@ export class WebsitePageRendererComponent implements OnInit {
             try {
               const sections = pages[0]?.data?.sections || [];
               const scope = `#page-${this.pageId}`;
-              this.styleManager.generateFromSections(sections, [], scope);
+
+              // Get theme colors from company context
+              const company = this.contextService.currentCompany();
+              const themeColors: IThemeColor[] = company?.metadata?.themeColors || [];
+
+              this.styleManager.generateFromSections(sections, [], scope, themeColors);
             } catch (e) {
               console.warn('Style generation failed:', e);
             }

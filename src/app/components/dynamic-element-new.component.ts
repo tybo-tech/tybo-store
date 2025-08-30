@@ -10,9 +10,8 @@ import { RouterModule } from '@angular/router';
 import { PageElement, PageSection } from '../models/website.interface';
 
 // Import section components
-import { FeatureIntroComponent } from '../apps/storefront/sections/feature-intro.component';
 import { NineGridCategoryComponent } from './sections/nine-grid-category.component';
-import { CategoryProductsComponent } from '../apps/storefront/sections/category-products.component';
+import { CategoryProductsCarouselComponent } from '../apps/storefront/sections/category-products-carousel.component';
 import { HeroSliderComponent } from './sections/hero-slider-new.component';
 
 @Component({
@@ -22,10 +21,9 @@ import { HeroSliderComponent } from './sections/hero-slider-new.component';
     CommonModule,
     RouterModule,
     // Section components
-    FeatureIntroComponent,
     HeroSliderComponent,
     NineGridCategoryComponent,
-    CategoryProductsComponent
+    CategoryProductsCarouselComponent
   ],
   template: `
     <!-- Dynamic element rendering: Can render both simple HTML elements AND complex components -->
@@ -38,18 +36,7 @@ import { HeroSliderComponent } from './sections/hero-slider-new.component';
           [id]="element.id">
         </app-hero-slider>
       }
-      @case ('feature-intro') {
-        <app-feature-intro
-          [section]="asPageSection()"
-          [id]="element.id">
-        </app-feature-intro>
-      }
-      @case ('feature-intro1') {
-        <app-feature-intro
-          [section]="asPageSection()"
-          [id]="element.id">
-        </app-feature-intro>
-      }
+  <!-- 'feature-intro' variants are rendered generically by default case -->
       @case ('nine-grid-category') {
         <app-nine-grid-category
           [section]="asPageSection()"
@@ -57,16 +44,14 @@ import { HeroSliderComponent } from './sections/hero-slider-new.component';
         </app-nine-grid-category>
       }
       @case ('category-products') {
-        <app-category-products
-          [section]="asPageSection()"
-          [id]="element.id">
-        </app-category-products>
+        <app-category-products-carousel
+          [section]="asPageSection()">
+        </app-category-products-carousel>
       }
       @case ('category-with-products') {
-        <app-category-products
-          [section]="asPageSection()"
-          [id]="element.id">
-        </app-category-products>
+        <app-category-products-carousel
+          [section]="asPageSection()">
+        </app-category-products-carousel>
       }
 
       <!-- Container Elements with Recursive Children -->
@@ -407,21 +392,47 @@ import { HeroSliderComponent } from './sections/hero-slider-new.component';
 
       <!-- Default case for unknown elements -->
       @default {
-        <div
-          [id]="element.id"
-          [class]="elementClasses()"
-          [ngStyle]="elementStyles()">
-          @if (getChildren().length) {
-            @for (child of getChildren(); track child.id) {
-              <app-dynamic-element
-                [element]="child"
-                [device]="device">
-              </app-dynamic-element>
+        @if (isPageSection()) {
+          <!-- Generic Section Rendering: section wrapper + container wrapper -->
+          <section
+            [id]="element.id"
+            [class]="sectionWrapperClasses()"
+            [ngStyle]="sectionWrapperStyles()">
+            <div
+              [class]="containerWrapperClasses()"
+              [ngStyle]="containerWrapperStyles()">
+              @if (getChildren().length) {
+                @for (child of getChildren(); track child.id) {
+                  <app-dynamic-element
+                    [element]="child"
+                    [device]="device">
+                  </app-dynamic-element>
+                }
+              } @else {
+                <div class="bg-amber-50 border border-amber-200 text-amber-800 text-sm rounded p-3">
+                  Section '{{ getElementTag() }}' has no content yet.
+                </div>
+              }
+            </div>
+          </section>
+        } @else {
+          <!-- Generic Element Rendering -->
+          <div
+            [id]="element.id"
+            [class]="elementClasses()"
+            [ngStyle]="elementStyles()">
+            @if (getChildren().length) {
+              @for (child of getChildren(); track child.id) {
+                <app-dynamic-element
+                  [element]="child"
+                  [device]="device">
+                </app-dynamic-element>
+              }
+            } @else {
+              {{ getValue() || getElementTag() }}
             }
-          } @else {
-            {{ getValue() || getElementTag() }}
-          }
-        </div>
+          </div>
+        }
       }
     }
   `,
@@ -580,5 +591,60 @@ export class DynamicElementComponent {
   getAlt(): string {
     if (this.isPageSection()) return 'Image';
     return (this.element as PageElement).alt || 'Image';
+  }
+
+  // -------- Generic PageSection rendering helpers --------
+  private sanitizeId(id?: string): string {
+    return (id || 'unknown').replace(/[^a-zA-Z0-9_-]/g, '-');
+  }
+
+  private getDeviceStyles(obj?: any): any {
+    if (!obj) return {};
+    return obj[this.device] || {};
+  }
+
+  private extractTailwindClassName(styles: any): string {
+    return typeof styles?.className === 'string' ? styles.className : '';
+    }
+
+  sectionWrapperClasses(): string {
+    const section = this.asPageSection();
+    const secCls = `sec-${this.sanitizeId(section.id)}`;
+    const deviceStyles = this.getDeviceStyles(section.styles);
+    const tailwind = this.extractTailwindClassName(deviceStyles);
+    return [secCls, tailwind].filter(Boolean).join(' ').trim();
+  }
+
+  sectionWrapperStyles(): Record<string, string> {
+    const section = this.asPageSection();
+    const deviceStyles = { ...this.getDeviceStyles(section.styles) };
+    delete deviceStyles.className;
+    const inline: any = {};
+    Object.keys(deviceStyles).forEach(k => {
+      const cssKey = k.includes('-') ? k : k.replace(/([A-Z])/g, '-$1').toLowerCase();
+      inline[cssKey] = String(deviceStyles[k]);
+    });
+    return inline;
+  }
+
+  containerWrapperClasses(): string {
+    const section = this.asPageSection();
+    const contId = section.container?.id || '';
+    const contCls = `cont-${this.sanitizeId(contId)}`;
+    const deviceStyles = this.getDeviceStyles(section.container?.styles);
+    const tailwind = this.extractTailwindClassName(deviceStyles);
+    return [contCls, tailwind].filter(Boolean).join(' ').trim();
+  }
+
+  containerWrapperStyles(): Record<string, string> {
+    const section = this.asPageSection();
+    const deviceStyles = { ...this.getDeviceStyles(section.container?.styles) };
+    delete deviceStyles.className;
+    const inline: any = {};
+    Object.keys(deviceStyles).forEach(k => {
+      const cssKey = k.includes('-') ? k : k.replace(/([A-Z])/g, '-$1').toLowerCase();
+      inline[cssKey] = String(deviceStyles[k]);
+    });
+    return inline;
   }
 }
