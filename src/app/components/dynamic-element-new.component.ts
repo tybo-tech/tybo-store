@@ -13,6 +13,7 @@ import { PageElement, PageSection } from '../models/website.interface';
 import { NineGridCategoryComponent } from './sections/nine-grid-category.component';
 import { CategoryProductsCarouselComponent } from '../apps/storefront/sections/category-products-carousel.component';
 import { HeroSliderComponent } from './sections/hero-slider-new.component';
+import { CategorySliderComponent } from './sections/category-slider.component';
 
 @Component({
   selector: 'app-dynamic-element',
@@ -23,7 +24,8 @@ import { HeroSliderComponent } from './sections/hero-slider-new.component';
     // Section components
     HeroSliderComponent,
     NineGridCategoryComponent,
-    CategoryProductsCarouselComponent
+    CategoryProductsCarouselComponent,
+    CategorySliderComponent
   ],
   template: `
     <!-- Dynamic element rendering: Can render both simple HTML elements AND complex components -->
@@ -35,6 +37,14 @@ import { HeroSliderComponent } from './sections/hero-slider-new.component';
           [section]="asPageSection()"
           [id]="element.id">
         </app-hero-slider>
+      }
+      @case ('category-slider') {
+        <app-category-slider
+          [content]="getCategorySliderContent()"
+          [styles]="elementStyles()"
+          [autoPlay]="true"
+          [autoPlayInterval]="5000">
+        </app-category-slider>
       }
   <!-- 'feature-intro' variants are rendered generically by default case -->
       @case ('nine-grid-category') {
@@ -591,6 +601,21 @@ export class DynamicElementComponent {
   getAlt(): string {
     if (this.isPageSection()) return 'Image';
     return (this.element as PageElement).alt || 'Image';
+  }
+
+  /**
+   * Extract category slider content from section
+   */
+  getCategorySliderContent(): any[] {
+    if (!this.isPageSection()) return [];
+
+    const section = this.asPageSection();
+    // Look for category-slider element in container children
+    const categorySliderElement = section.container?.children?.find(
+      child => child.tag === 'category-slider'
+    );
+
+    return categorySliderElement?.content || [];
   }
 
   // -------- Generic PageSection rendering helpers --------
