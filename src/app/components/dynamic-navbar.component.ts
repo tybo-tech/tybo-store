@@ -8,14 +8,6 @@ import { ContextService, Company, CompanyPage } from '../services/context.servic
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <!-- Temporary Debug Banner -->
-    <div style="background: #ff6b6b; color: white; padding: 8px; text-align: center; font-size: 12px;">
-      Company: {{ company()?.name || 'Not loaded' }} |
-      Logo: {{ company()?.logo ? 'Available' : 'Missing' }} |
-      Pages: {{ navigationPages().length }} |
-      Loading: {{ contextService.isLoading() }} |
-      Error: {{ contextService.error() || 'None' }}
-    </div>
 
     <nav class="dynamic-navbar" [ngStyle]="navbarStyles()">
       <!-- Banner Section (if enabled) -->

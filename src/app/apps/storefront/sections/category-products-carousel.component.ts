@@ -354,6 +354,22 @@ export class CategoryProductsCarouselComponent implements OnInit, OnChanges {
     return category?.trail || [];
   });
 
+  // Extract configured category ID for debugging
+  configuredCategoryId = computed(() => {
+    try {
+      const content = this.section?.container?.children?.[0]?.content || [];
+      if (Array.isArray(content)) {
+        const categoryEntry = content.find((c: any) =>
+          c.key === 'categoryId' || c.categoryId || c.category_id
+        );
+        return categoryEntry?.categoryId || categoryEntry?.category_id || categoryEntry?.value || 'Not found';
+      }
+    } catch {
+      return 'Error parsing';
+    }
+    return 'No content';
+  });
+
   // CSS-safe class names for storefront style manager
   private sanitizeId(id?: string) {
     return (id || 'unknown').replace(/[^a-zA-Z0-9_-]/g, '-');
@@ -391,36 +407,59 @@ export class CategoryProductsCarouselComponent implements OnInit, OnChanges {
   private loadCategoryData(): void {
     // Extract categoryId from section content
     let categoryId: number | undefined;
+
     try {
       const content = this.section?.container?.children?.[0]?.content || [];
-      const entry = Array.isArray(content)
-        ? content.find((c: any) => c.categoryId || c.category_id || c.value)
-        : null;
-      const raw = entry?.categoryId || entry?.category_id || entry?.value;
-      if (raw !== undefined && raw !== null && raw !== '') {
-        const parsed = parseInt(String(raw), 10);
-        if (!isNaN(parsed)) categoryId = parsed;
+      console.log('🔍 Category section content:', content);
+
+      if (Array.isArray(content)) {
+        // Look for the content entry with categoryId
+        const categoryEntry = content.find((c: any) =>
+          c.key === 'categoryId' || c.categoryId || c.category_id
+        );
+
+        console.log('📝 Found category entry:', categoryEntry);
+
+        if (categoryEntry) {
+          // Try to get categoryId from different possible fields
+          const rawId = categoryEntry.categoryId || categoryEntry.category_id || categoryEntry.value;
+          console.log('🎯 Raw category ID:', rawId);
+
+          if (rawId !== undefined && rawId !== null && rawId !== '') {
+            const parsed = parseInt(String(rawId), 10);
+            if (!isNaN(parsed)) {
+              categoryId = parsed;
+              console.log('✅ Successfully parsed category ID:', categoryId);
+            }
+          }
+        }
       }
-    } catch {}
+    } catch (error) {
+      console.error('❌ Error extracting category ID:', error);
+    }
 
     if (!categoryId) {
-      this._error.set('No category ID found in section content');
+      const errorMsg = 'No valid category ID found in section content. Expected categoryId field with numeric value.';
+      console.error('❌', errorMsg);
+      this._error.set(errorMsg);
       return;
     }
 
+    console.log('🚀 Loading category data for ID:', categoryId);
     this._loading.set(true);
     this._error.set(null);
 
     this.categoryService.getCategoryWithProducts(categoryId).subscribe({
       next: (categoryData: any) => {
+        console.log('📦 Received category data:', categoryData);
         this._categoryData.set(categoryData);
         this._loading.set(false);
         // Update scroll state after data loads
         setTimeout(() => this.updateScrollState(), 100);
       },
       error: (err) => {
-        console.error('Failed to load category', err);
-        this._error.set('Could not load category data.');
+        console.error('❌ Failed to load category data:', err);
+        this._error.set(`Could not load category ${categoryId}. Please check if the category exists.`);
         this._loading.set(false);
       },
     });
