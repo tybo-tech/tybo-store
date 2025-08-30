@@ -1,0 +1,309 @@
+{
+    "id": 2,
+    "slug": "mayandaempire",
+    "name": "Mayanda Empire",
+    "logo": "https:\/\/store.tybo.co.za\/api\/api\/upload\/uploads\/1749491807Image.png",
+    "description": "",
+    "address": "The South",
+    "latitude": "-22.983426",
+    "longitude": "30.462617",
+    "address_url": "https:\/\/maps.google.com\/?cid=18397882146114513953",
+    "created_at": "2024-01-16 11:21:17",
+    "owner_id": "54",
+    "metadata": {
+        "logos": [],
+        "pages": [
+            {
+                "id": "home",
+                "link": "\/",
+                "name": "Home",
+                "sections": [],
+                "showOnNav": "Yes"
+            },
+            {
+                "id": "about-us",
+                "link": "\/home\/about-us",
+                "name": "About Us",
+                "sections": [],
+                "showOnNav": "No"
+            },
+            {
+                "id": "contact-us",
+                "link": "\/home\/contact-us",
+                "name": "Contact Us",
+                "sections": [],
+                "showOnNav": "Yes"
+            },
+            {
+                "id": "account",
+                "link": "\/home\/login",
+                "name": "Account",
+                "sections": [],
+                "showOnNav": "Yes"
+            },
+            {
+                "id": "category",
+                "link": "\/cat",
+                "name": "category",
+                "sections": [],
+                "showOnNav": "No"
+            },
+            {
+                "id": "products",
+                "link": "\/home\/products",
+                "name": "Products",
+                "sections": [],
+                "showOnNav": "Yes"
+            },
+            {
+                "id": "product",
+                "link": "\/home\/product",
+                "name": "Product",
+                "sections": [],
+                "showOnNav": "No"
+            },
+            {
+                "id": "sign-up",
+                "link": "\/home\/sign-up",
+                "name": "Sign Up",
+                "sections": [],
+                "showOnNav": "No"
+            },
+            {
+                "id": "login",
+                "link": "\/home\/login",
+                "name": "Login",
+                "sections": [],
+                "showOnNav": "No"
+            },
+            {
+                "id": "forgot-password",
+                "link": "\/home\/forgot-password",
+                "name": "Forgot password",
+                "sections": [],
+                "showOnNav": "No"
+            },
+            {
+                "id": "checkout",
+                "link": "\/home\/checkout",
+                "name": "Checkout",
+                "sections": [],
+                "showOnNav": "Yes"
+            }
+        ],
+        "images": [],
+        "webUrl": "https:\/\/viviid.co.za",
+        "navType": "default",
+        "bannerBg": "#a78141",
+        "currency": "ZAR ",
+        "metaTags": {
+            "title": "We bake",
+            "author": "SA Precast",
+            "og_url": "https:\/\/saprecast.co.za",
+            "robots": "index, follow",
+            "favicon": "favicon.ico",
+            "og_type": "website",
+            "keywords": "precast concrete, building materials, construction supplies, kerbs, lintels, paving blocks, concrete slabs, SA Precast, South Africa, walling solutions, construction store",
+            "manifest": "manifest.webmanifest",
+            "og_image": "https:\/\/saprecast.co.za\/assets\/sa-precast-og.jpg",
+            "og_title": "SA Precast | Quality Building Materials & Precast Concrete",
+            "canonical": "https:\/\/saprecast.co.za",
+            "description": "Discover WeBake \u2013 your go-to destination for handcrafted, joy-filled treats. From crunchy snacks to giftable delights, our locally made products bring flavor, fun, and love to every moment.",
+            "theme_color": "#1a1a1a",
+            "twitter_card": "summary_large_image",
+            "twitter_image": "https:\/\/saprecast.co.za\/assets\/sa-precast-og.jpg",
+            "twitter_title": "SA Precast | Your Trusted Building Materials Supplier",
+            "og_description": "Discover durable and affordable precast concrete products, paving blocks, kerbs, and more. SA Precast is your partner in construction success.",
+            "twitter_description": "Build smarter with SA Precast. Supplying reliable concrete and construction materials to professionals across South Africa."
+        },
+        "whatsapp": "+27761624486",
+        "useWeight": "No",
+        "varations": [
+            {
+                "name": "Choose color",
+                "type": "Color",
+                "value": "Red",
+                "options": []
+            },
+            {
+                "name": "Choose size",
+                "type": "Size",
+                "value": "S",
+                "options": []
+            },
+            {
+                "name": "Choose logo",
+                "type": "Logo",
+                "value": "Classic",
+                "options": []
+            },
+            {
+                "name": "Choose logo position",
+                "type": "Logo position",
+                "value": "C",
+                "options": []
+            },
+            {
+                "name": "Choose logo size",
+                "type": "Logo size",
+                "value": "M",
+                "options": []
+            }
+        ],
+        "enableYoco": false,
+        "isMigrated": true,
+        "logoSizePc": 7,
+        "showBanner": true,
+        "bannerColor": "#ffffff",
+        "orderPrefix": "ORD-",
+        "themeColors": [
+            {
+                "name": "Background Color",
+                "value": "#ffffff",
+                "variable": "--color-background"
+            },
+            {
+                "name": "Surface Color",
+                "value": "#ffffff",
+                "variable": "--color-surface"
+            },
+            {
+                "name": "Border Color",
+                "value": "#dcdcdc",
+                "variable": "--color-border"
+            },
+            {
+                "name": "Text Color",
+                "value": "#5e5e5e",
+                "variable": "--color-text"
+            },
+            {
+                "name": "Muted Text",
+                "value": "#6c757d",
+                "variable": "--color-muted"
+            },
+            {
+                "name": "Primary Color",
+                "value": "#a38245",
+                "variable": "--color-primary"
+            },
+            {
+                "name": "Accent Color",
+                "value": "#d6d6d6",
+                "variable": "--color-secondary"
+            },
+            {
+                "name": "Success Color",
+                "value": "#28a745",
+                "variable": "--color-success"
+            },
+            {
+                "name": "Error Color",
+                "value": "#dc3545",
+                "variable": "--color-error"
+            },
+            {
+                "name": "Warning Color",
+                "value": "#ffc107",
+                "variable": "--color-warning"
+            },
+            {
+                "name": "Info Color",
+                "value": "#fd891c",
+                "variable": "--color-info"
+            },
+            {
+                "name": "Input Background",
+                "value": "#f6f5f5",
+                "variable": "--color-input-bg"
+            },
+            {
+                "name": "Input Border",
+                "value": "#d0d0d0",
+                "variable": "--color-input-border"
+            },
+            {
+                "name": "Overlay Color",
+                "value": "rgba(0, 0, 0, 0.4)",
+                "variable": "--color-overlay"
+            },
+            {
+                "name": "Secondary Inverse Color",
+                "value": "#5e5e5e",
+                "variable": "--color-secondary-inverse"
+            },
+            {
+                "name": "Primary Inverse Color",
+                "value": "#ffffff",
+                "variable": "--color-primary-inverse"
+            },
+            {
+                "name": "Surface Text Color",
+                "value": "#d1d1d1",
+                "variable": "--color-surface-inverse"
+            },
+            {
+                "name": "Primary Dark Color",
+                "value": "#000000",
+                "variable": "--color-primary-dark"
+            }
+        ],
+        "deliveryFees": [
+            {
+                "max": 5,
+                "min": 0,
+                "value": 100
+            },
+            {
+                "max": 15,
+                "min": 6,
+                "value": 150
+            },
+            {
+                "max": 35,
+                "min": 16,
+                "value": 250
+            }
+        ],
+        "noReplyEmail": "no-reply@viviid.co.za",
+        "bannerMessage": " \u26bd Free nationwide delivery on all orders over R1,000! | Authentic. Local. Yours. ",
+        "enablePayfast": true,
+        "enableDemoMode": true,
+        "logoSizeMobile": 5,
+        "processingTime": "Your order will be processed upon verification of the payment. Please allow 7 Days for processing and confirmation.",
+        "cashTransferBank": "FNB",
+        "deliveryFeesTypes": [
+            {
+                "id": "60u6221x8",
+                "name": "Paxi 3 - 5 business day",
+                "price": 100
+            },
+            {
+                "id": "vvv1ogwie",
+                "name": "Paxi 7 - 9 business day",
+                "price": 60
+            },
+            {
+                "id": "gtlbk7iz2",
+                "name": "Self collect",
+                "price": 0
+            }
+        ],
+        "payFastMerchantId": "17194710",
+        "cashTransferBranch": "470010",
+        "enableCashTransfer": true,
+        "payFastMerchantKey": "tqcl4iesooa66",
+        "yocoPaymentKeyLive": "xxxxx",
+        "cashTransferAccount": "00000000",
+        "enableProcessingTime": true,
+        "yocoPaymentKeySandBox": "xxxxxxxx",
+        "cashTransferAccountName": "viviid",
+        "cashTransferAccountType": "Savings"
+    },
+    "email": "info@viviid.co.za",
+    "phone": "+27761624486",
+    "twitter": "",
+    "facebook": "https:\/\/www.facebook.com\/profile.php?id=61551844396365",
+    "instagram": "",
+    "tiktok": ""
+}

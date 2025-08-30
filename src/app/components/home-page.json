@@ -1,0 +1,388 @@
+[
+  {
+    "id": 99,
+    "collection_id": "page",
+    "parent_id": "home",
+    "data": {
+      "sections": [
+        {
+          "id": "section-0f8b9131-3e6a-4ec4-b17c-e6566dfd89d5",
+          "type": "hero-slider",
+          "image": "hero-slider.png",
+          "pageId": "home",
+          "styles": {
+            "pc": {
+              "width": "100%",
+              "padding": "0",
+              "background-color": "#f3f4f6"
+            },
+            "mobile": {
+              "padding": "30px 12px"
+            },
+            "tablet": {
+              "padding": "40px 16px"
+            }
+          },
+          "container": {
+            "id": "el-84a14c90-0de6-4ea9-9df0-6311683fdcd4",
+            "tag": "div",
+            "styles": {
+              "pc": {
+                "margin": "0 auto",
+                "padding": "0",
+                "max-width": "100%"
+              },
+              "mobile": {
+                "padding": "30px 12px"
+              },
+              "tablet": {
+                "padding": "40px 16px"
+              }
+            },
+            "children": [
+              {
+                "id": "el-f4bfb5c9-81fc-40bb-a529-d30a329a9eb1",
+                "tag": "hero-slider",
+                "styles": {
+                  "pc": {
+                    "width": "100%",
+                    "height": "600px",
+                    "position": "relative"
+                  },
+                  "mobile": {
+                    "height": "300px"
+                  },
+                  "tablet": {
+                    "height": "400px"
+                  }
+                },
+                "content": [
+                  {
+                    "link": "/home/shop",
+                    "image": "https://store.tybo.co.za/api/api/upload/uploads/1749492341leah-hetteberg-IoJFOvbqF3c-unsplash.jpg",
+                    "title": "Wear Your Passion.",
+                    "description": "Shop authentic jerseys from South Africa\u2019s top clubs and show the world where your heart belongs."
+                  },
+                  {
+                    "link": "/home/shop",
+                    "image": "https://store.tybo.co.za/api/api/upload/uploads/1749492628mauro-lima-a0-eHqz4D_I-unsplash.jpg",
+                    "title": "Supporters. Not Just Customers.",
+                    "description": "Join a movement that celebrates real fans, rewards loyalty, and uplifts local communities with every purchase."
+                  },
+                  {
+                    "link": "/home/shop",
+                    "image": "https://store.tybo.co.za/api/api/upload/uploads/1749492669fotos-x737m9hjiUc-unsplash.jpg",
+                    "title": "Game Day, Every Day.",
+                    "description": "Bring the match-day experience home with official gear, bold streetwear, and exclusive supporter benefits."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "section-760929e0-3d1a-491a-81a5-cd05457312b3",
+          "type": "nine-grid-category",
+          "image": "nine-grid-category.png",
+          "pageId": "home",
+          "styles": {
+            "pc": {
+              "width": "100%",
+              "padding": "60px 20px",
+              "background-color": "#f3f4f6"
+            },
+            "mobile": {
+              "padding": "30px 12px"
+            },
+            "tablet": {
+              "padding": "40px 16px"
+            }
+          },
+          "container": {
+            "id": "el-62a03478-431a-4577-adfc-f3b1cf464b11",
+            "tag": "div",
+            "styles": {
+              "pc": {
+                "margin": "0 auto",
+                "padding": "60px 20px",
+                "max-width": "1200px"
+              },
+              "mobile": {
+                "padding": "30px 12px"
+              },
+              "tablet": {
+                "padding": "40px 16px"
+              }
+            },
+            "children": [
+              {
+                "id": "el-f124f110-26ba-43ab-b555-8efbbc902f42",
+                "tag": "nine-grid-category",
+                "styles": {
+                  "pc": {
+                    "width": "100%"
+                  },
+                  "mobile": [],
+                  "tablet": []
+                },
+                "content": []
+              }
+            ]
+          }
+        },
+        {
+          "id": "section-40cb7393-4326-40bd-9d8f-3befa4c8d112",
+          "type": "feature-intro1",
+          "image": "feature-intro1.png",
+          "pageId": "home",
+          "styles": {
+            "pc": {
+              "width": "100%",
+              "padding": "60px 20px",
+              "background-color": "#f3f4f6"
+            },
+            "mobile": {
+              "padding": "30px 12px"
+            },
+            "tablet": {
+              "padding": "40px 16px"
+            }
+          },
+          "container": {
+            "id": "el-89e72693-9fc7-436d-bfcf-10ac9775230d",
+            "tag": "div",
+            "styles": {
+              "pc": {
+                "margin": "0 auto",
+                "padding": "60px 20px",
+                "max-width": "1200px"
+              },
+              "mobile": {
+                "padding": "30px 12px"
+              },
+              "tablet": {
+                "padding": "40px 16px"
+              }
+            },
+            "children": [
+              {
+                "id": "el-5a3131ea-ff95-4cb6-9116-da99936d31be",
+                "tag": "div",
+                "styles": {
+                  "pc": {
+                    "gap": "20px",
+                    "margin": "0 auto",
+                    "display": "flex",
+                    "padding": "60px 20px",
+                    "max-width": "900px",
+                    "text-align": "center",
+                    "align-items": "center",
+                    "flex-direction": "column"
+                  },
+                  "mobile": {
+                    "padding": "30px 12px"
+                  },
+                  "tablet": {
+                    "padding": "40px 16px"
+                  }
+                },
+                "children": [
+                  {
+                    "id": "el-3197b46a-d260-44a1-9a4c-70b838051d29",
+                    "tag": "h3",
+                    "value": " Welcome to Mayanda Empire ",
+                    "styles": {
+                      "pc": {
+                        "color": "#111827",
+                        "font-size": "2rem",
+                        "font-weight": "700"
+                      },
+                      "mobile": {
+                        "font-size": "2rem"
+                      },
+                      "tablet": {
+                        "font-size": "2.5rem"
+                      }
+                    }
+                  },
+                  {
+                    "id": "el-5864b4e3-e7f2-4078-82bb-d3332882ce2f",
+                    "tag": "p",
+                    "value": "We strives to provide trendsetting streetwear that merges comfort and style effortlessly. We aim to redefine your wardrobe with meticulously curated collections, reflecting the pulse of modern fashion. ",
+                    "styles": {
+                      "pc": {
+                        "color": "#4B5563",
+                        "font-size": ".85rem",
+                        "line-height": "1.6"
+                      },
+                      "mobile": {
+                        "font-size": "0.95rem"
+                      },
+                      "tablet": {
+                        "font-size": "1rem"
+                      }
+                    }
+                  },
+                  {
+                    "id": "el-0af9971c-7802-4842-90e1-7b0970beafff",
+                    "tag": "button",
+                    "link": "/home/about-us",
+                    "value": "Read More",
+                    "styles": {
+                      "pc": {
+                        "color": "#fff",
+                        "padding": "12px 24px",
+                        "font-size": "1rem",
+                        "border-radius": "8px",
+                        "background-color": "var(--color-primary)"
+                      },
+                      "mobile": {
+                        "padding": "8px 16px",
+                        "font-size": "0.9rem"
+                      },
+                      "tablet": {
+                        "padding": "10px 20px",
+                        "font-size": "0.95rem"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "section-f34263f2-6c29-4940-8f1d-387418710dce",
+          "type": "category-with-products",
+          "image": "category-with-products.png",
+          "pageId": "home",
+          "styles": {
+            "pc": {
+              "width": "100%",
+              "padding": "10px 20px",
+              "background-color": "#f3f4f6"
+            },
+            "mobile": {
+              "padding": "30px 12px"
+            },
+            "tablet": {
+              "padding": "40px 16px"
+            }
+          },
+          "container": {
+            "id": "el-2e724ae2-27e0-4d9a-84dc-a27662a3d9c8",
+            "tag": "div",
+            "styles": {
+              "pc": {
+                "margin": "0 auto",
+                "padding": "10px 20px",
+                "max-width": "1200px"
+              },
+              "mobile": {
+                "padding": "30px 12px"
+              },
+              "tablet": {
+                "padding": "40px 16px"
+              }
+            },
+            "children": [
+              {
+                "id": "el-5abe08c1-597a-4392-85c9-36c435f12624",
+                "tag": "category-with-products",
+                "styles": {
+                  "pc": {
+                    "width": "100%",
+                    "background": "#f3f4f6"
+                  },
+                  "mobile": {
+                    "width": "100%"
+                  },
+                  "tablet": {
+                    "width": "100%"
+                  }
+                },
+                "content": [
+                  {
+                    "key": "categoryId",
+                    "name": "Category Id",
+                    "value": 1,
+                    "categoryId": "210"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "section-0b58ac6f-33e1-4000-a9db-33c8907b0ab4",
+          "type": "category-with-products",
+          "image": "category-with-products.png",
+          "pageId": "home",
+          "styles": {
+            "pc": {
+              "width": "100%",
+              "padding": "10px 20px",
+              "background-color": "#f3f4f6"
+            },
+            "mobile": {
+              "padding": "30px 12px"
+            },
+            "tablet": {
+              "padding": "40px 16px"
+            }
+          },
+          "container": {
+            "id": "el-6be943d0-0538-411c-96d0-966aad1b386b",
+            "tag": "div",
+            "styles": {
+              "pc": {
+                "margin": "0 auto",
+                "padding": "10px 20px",
+                "max-width": "1200px"
+              },
+              "mobile": {
+                "padding": "30px 12px"
+              },
+              "tablet": {
+                "padding": "40px 16px"
+              }
+            },
+            "children": [
+              {
+                "id": "el-a19534c6-ba56-4be2-8714-8ad52eed3b22",
+                "tag": "category-with-products",
+                "styles": {
+                  "pc": {
+                    "width": "100%",
+                    "background": "#f3f4f6"
+                  },
+                  "mobile": {
+                    "width": "100%"
+                  },
+                  "tablet": {
+                    "width": "100%"
+                  }
+                },
+                "content": [
+                  {
+                    "key": "categoryId",
+                    "name": "Category Id",
+                    "value": 1,
+                    "categoryId": "211"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "company_id": 2,
+    "website_id": null,
+    "created_at": "2025-06-28 04:59:14",
+    "created_by": null,
+    "updated_at": "2025-07-01 04:12:16",
+    "updated_by": null,
+    "status_id": 1
+  }
+]

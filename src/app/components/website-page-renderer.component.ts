@@ -1,6 +1,7 @@
 import { Component, Input, inject, signal, computed, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WebsiteService } from '../services/website.service';
+import { StyleManagerService } from '../services/style-manager.service';
 import { ContextService } from '../services/context.service';
 import { DynamicElementComponent } from './dynamic-element-new.component';
 import { WebsitePageData, PageSection, PageElement } from '../models/website.interface';
@@ -259,6 +260,7 @@ export type DeviceMode = 'pc' | 'mobile' | 'tablet';
 export class WebsitePageRendererComponent implements OnInit {
   private websiteService = inject(WebsiteService);
   private contextService = inject(ContextService);
+  private styleManager = inject(StyleManagerService);
 
   // Required inputs
   @Input({ required: true }) pageId!: string;
@@ -315,14 +317,25 @@ export class WebsitePageRendererComponent implements OnInit {
         next: (pages) => {
           if (pages && pages.length > 0) {
             this.pageData.set(pages[0]); // Take the first page
+            // Generate and inject styles for the loaded sections, scoped to this page
+            try {
+              const sections = pages[0]?.data?.sections || [];
+              const scope = `#page-${this.pageId}`;
+              this.styleManager.generateFromSections(sections, [], scope);
+            } catch (e) {
+              console.warn('Style generation failed:', e);
+            }
           } else {
             this.pageData.set(null);
+            // Clear styles when no page
+            this.styleManager.clear();
           }
           this.loading.set(false);
         },
         error: (err) => {
           console.error('Error loading page data:', err);
           this.error.set('Failed to load page data');
+          this.styleManager.clear();
           this.loading.set(false);
         }
       });

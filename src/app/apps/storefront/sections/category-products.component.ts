@@ -1,14 +1,15 @@
-import { Component, Input, computed, inject } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, computed, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageSection } from '../../../models/website.interface';
 import { ProductService } from '../../../services/product.service';
+import { ContextService } from '../../../services/context.service';
 
 @Component({
   selector: 'app-category-products',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section [ngStyle]="sectionStyles()">
+    <section [ngStyle]="sectionStyles()" [ngClass]="[sectionClass(), containerClassName()]">
       <div class="container mx-auto px-4 py-12">
         <!-- Section Header -->
         <div class="text-center mb-12">
@@ -23,6 +24,33 @@ import { ProductService } from '../../../services/product.service';
             </p>
           }
         </div>
+
+        <!-- Loading State -->
+  @if (isLoading()) {
+          <div class="flex justify-center items-center py-12 text-gray-500">
+            <i class="fas fa-spinner fa-spin mr-2"></i> Loading products...
+          </div>
+        }
+
+        <!-- Error State -->
+  @if (errorMsg()) {
+          <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
+            <div class="flex items-center">
+              <i class="fas fa-exclamation-triangle text-red-500 mr-3"></i>
+              <div>
+                <h3 class="text-red-800 font-medium">Failed to load products</h3>
+                <p class="text-red-600 text-sm">{{ errorMsg() }}</p>
+              </div>
+            </div>
+          </div>
+        }
+
+        <!-- Empty State -->
+  @if (!isLoading() && !errorMsg() && displayedProducts().length === 0) {
+          <div class="text-center text-gray-500 py-12">
+            No products found.
+          </div>
+        }
 
         <!-- Category Tabs -->
         @if (categories().length > 1) {
@@ -165,14 +193,28 @@ import { ProductService } from '../../../services/product.service';
     }
   `]
 })
-export class CategoryProductsComponent {
+export class CategoryProductsComponent implements OnInit, OnChanges {
   @Input() section!: PageSection;
 
   private productService = inject(ProductService);
+  private contextService = inject(ContextService);
 
   defaultProductImage = 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop';
   activeCategory = 'all';
   displayLimit = 8;
+  private productsSignal = signal<any[]>([]);
+  private _loading = signal<boolean>(false);
+  private _error = signal<string | null>(null);
+
+  isLoading = computed(() => this._loading());
+  errorMsg = computed(() => this._error());
+
+  // CSS-safe class names for storefront style manager
+  private sanitizeId(id?: string) {
+    return (id || 'unknown').replace(/[^a-zA-Z0-9_-]/g, '-');
+  }
+  sectionClass = computed(() => `sec-${this.sanitizeId(this.section?.id)}`);
+  containerClassName = computed(() => `cont-${this.sanitizeId(this.section?.container?.id)}`);
 
   sectionTitle = computed(() => {
     const titleElement = this.section?.container?.children?.find(child => child.tag === 'h2');
@@ -205,82 +247,17 @@ export class CategoryProductsComponent {
       { id: 'home', name: 'Home & Garden' }
     ];
   });
-
-  products = computed(() => {
-    // Mock product data - in real app, this would come from ProductService
-    return [
-      {
-        id: 1,
-        name: 'Wireless Bluetooth Headphones',
-        price: 99.99,
-        originalPrice: 129.99,
-        image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',
-        category: 'electronics',
-        rating: 4.5,
-        reviewCount: 128,
-        discount: 23,
-        isNew: false
-      },
-      {
-        id: 2,
-        name: 'Premium Cotton T-Shirt',
-        price: 29.99,
-        image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400',
-        category: 'clothing',
-        rating: 4.8,
-        reviewCount: 89,
-        isNew: true
-      },
-      {
-        id: 3,
-        name: 'Smart Watch Series 5',
-        price: 299.99,
-        originalPrice: 349.99,
-        image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',
-        category: 'electronics',
-        rating: 4.6,
-        reviewCount: 245,
-        discount: 14,
-        isNew: false
-      },
-      {
-        id: 4,
-        name: 'Indoor Plant Collection',
-        price: 49.99,
-        image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400',
-        category: 'home',
-        rating: 4.3,
-        reviewCount: 67,
-        isNew: true
-      },
-      {
-        id: 5,
-        name: 'Vintage Denim Jacket',
-        price: 79.99,
-        image: 'https://images.unsplash.com/photo-1544966503-7e33d46b3d59?w=400',
-        category: 'clothing',
-        rating: 4.7,
-        reviewCount: 156,
-        isNew: false
-      },
-      {
-        id: 6,
-        name: 'Wireless Charging Pad',
-        price: 39.99,
-        image: 'https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?w=400',
-        category: 'electronics',
-        rating: 4.4,
-        reviewCount: 92,
-        isNew: true
-      }
-    ];
-  });
+  // Effective products
+  products = computed(() => this.productsSignal());
 
   filteredProducts = computed(() => {
     if (this.activeCategory === 'all') {
       return this.products();
     }
-    return this.products().filter(product => product.category === this.activeCategory);
+    return this.products().filter((product: any) => {
+      const cat = product.category || product.category_id;
+      return cat == this.activeCategory; // loose equality for string/number
+    });
   });
 
   displayedProducts = computed(() => {
@@ -343,5 +320,63 @@ export class CategoryProductsComponent {
     console.log('View all products clicked');
     // TODO: Navigate to product listing page
     // this.router.navigate([this.viewAllUrl()]);
+  }
+
+  ngOnInit(): void {
+    this.loadProducts();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['section']) {
+      this.loadProducts();
+    }
+  }
+
+  private loadProducts(): void {
+    const companyId = this.contextService.getCompanyId();
+
+    // Look for a categoryId in section content (e.g., first child content entry)
+    let categoryId: number | undefined;
+    try {
+      const content = this.section?.container?.children?.[0]?.content || [];
+      const entry = Array.isArray(content) ? content.find((c: any) => c.categoryId || c.category_id || c.value) : null;
+      const raw = entry?.categoryId || entry?.category_id || entry?.value;
+      if (raw !== undefined && raw !== null && raw !== '') {
+        const parsed = parseInt(String(raw), 10);
+        if (!isNaN(parsed)) categoryId = parsed;
+      }
+    } catch {}
+
+  this._loading.set(true);
+  this._error.set(null);
+
+    const obs = categoryId
+      ? this.productService.getProductsByCategory(companyId, categoryId)
+      : this.productService.getFeaturedProducts(companyId);
+
+  obs.subscribe({
+      next: (prods: any[]) => {
+        // Normalize a bit for template compatibility
+        const mapped = (prods || []).map((p: any) => ({
+          id: p.id,
+          name: p.name,
+          price: p.sale_price ?? p.price,
+          originalPrice: p.sale_price ? p.price : undefined,
+          image: p.image || (Array.isArray(p.images) ? p.images[0] : undefined),
+          category: p.category_id,
+          rating: p.rating || 0,
+          reviewCount: p.reviewCount || 0,
+          discount: p.sale_price ? Math.round(((p.price - p.sale_price) / p.price) * 100) : undefined,
+          isNew: !!p.is_new
+        }));
+  this.productsSignal.set(mapped);
+  this._loading.set(false);
+      },
+      error: (err) => {
+        console.error('Failed to load products', err);
+  this._error.set('Could not load products.');
+  this._loading.set(false);
+      }
+    });
   }
 }
