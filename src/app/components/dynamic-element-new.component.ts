@@ -31,39 +31,6 @@ import { CategorySliderComponent } from './sections/category-slider.component';
     <!-- Dynamic element rendering: Can render both simple HTML elements AND complex components -->
     @switch (getElementTag()) {
 
-      <!-- Complex Section Components (when element is PageSection) -->
-      @case ('hero-slider') {
-        <app-hero-slider
-          [section]="asPageSection()"
-          [id]="element.id">
-        </app-hero-slider>
-      }
-      @case ('category-slider') {
-        <app-category-slider
-          [content]="getCategorySliderContent()"
-          [styles]="elementStyles()"
-          [autoPlay]="true"
-          [autoPlayInterval]="5000">
-        </app-category-slider>
-      }
-  <!-- 'feature-intro' variants are rendered generically by default case -->
-      @case ('nine-grid-category') {
-        <app-nine-grid-category
-          [section]="asPageSection()"
-          [id]="element.id">
-        </app-nine-grid-category>
-      }
-      @case ('category-products') {
-        <app-category-products-carousel
-          [section]="asPageSection()">
-        </app-category-products-carousel>
-      }
-      @case ('category-with-products') {
-        <app-category-products-carousel
-          [section]="asPageSection()">
-        </app-category-products-carousel>
-      }
-
       <!-- Container Elements with Recursive Children -->
       @case ('div') {
         <div
@@ -400,6 +367,38 @@ import { CategorySliderComponent } from './sections/category-slider.component';
         <br>
       }
 
+      <!-- Special Components - treat them like any other leaf element -->
+      @case ('category-slider') {
+        <app-category-slider
+          [content]="getCategorySliderContent()"
+
+          [autoPlay]="true"
+          [autoPlayInterval]="5000">
+        </app-category-slider>
+      }
+      @case ('hero-slider') {
+        <app-hero-slider
+          [section]="asPageSection()"
+          [id]="element.id">
+        </app-hero-slider>
+      }
+      @case ('nine-grid-category') {
+        <app-nine-grid-category
+          [section]="asPageSection()"
+          [id]="element.id">
+        </app-nine-grid-category>
+      }
+      @case ('category-products') {
+        <app-category-products-carousel
+          [section]="createSectionFromElement()">
+        </app-category-products-carousel>
+      }
+      @case ('category-with-products') {
+        <app-category-products-carousel
+          [section]="createSectionFromElement()">
+        </app-category-products-carousel>
+      }
+
       <!-- Default case for unknown elements -->
       @default {
         @if (isPageSection()) {
@@ -516,7 +515,9 @@ export class DynamicElementComponent {
    * Get combined CSS classes: base element class + Tailwind classes from database
    */
   elementClasses = computed(() => {
-    const baseClass = `el-${this.element.id?.replace('el-', '') || 'unknown'}`;
+    const elementId = this.element.id || 'unknown';
+    const cleanId = elementId.replace(/^el-/, ''); // Remove el- prefix if present
+    const baseClass = `el-${this.sanitizeId(cleanId)}`;
     const deviceStyles = this.element.styles?.[this.device] || {};
 
     // Extract Tailwind classes from database styles
@@ -604,18 +605,81 @@ export class DynamicElementComponent {
   }
 
   /**
-   * Extract category slider content from section
+   * Extract category slider content from element
    */
   getCategorySliderContent(): any[] {
-    if (!this.isPageSection()) return [];
+    if (this.isPageSection()) return this.getDefaultSliderContent();
 
-    const section = this.asPageSection();
-    // Look for category-slider element in container children
-    const categorySliderElement = section.container?.children?.find(
-      child => child.tag === 'category-slider'
-    );
+    const element = this.asPageElement();
+    const content = element.content || [];
 
-    return categorySliderElement?.content || [];
+    // If we have proper content, use it
+    if (content.length > 0 && content[0].title) {
+      return content;
+    }
+
+    // Otherwise, provide default content for demo/testing
+    return this.getDefaultSliderContent();
+  }
+
+  /**
+   * Get default slider content for demonstration
+   */
+  private getDefaultSliderContent(): any[] {
+    return [
+      {
+        link: '/shop/workwear',
+        image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=800&fit=crop',
+        title: 'Professional Workwear',
+        button: 'Shop Workwear',
+        subtitle: 'High-quality workwear for professionals. Durable, comfortable, and stylish clothing for every job.'
+      },
+      {
+        link: '/shop/printing',
+        image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1200&h=800&fit=crop',
+        title: 'Printing Solutions',
+        button: 'Explore Printing',
+        subtitle: 'Advanced printing machines and solutions for all your business needs. Quality prints, every time.'
+      },
+      {
+        link: '/shop/featured',
+        image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&h=800&fit=crop',
+        title: 'Featured Products',
+        button: 'View Featured',
+        subtitle: 'Discover our hand-picked selection of premium products. Quality, innovation, and style combined.'
+      }
+    ];
+  }
+
+  /**
+   * Create a section object from an element for components that expect sections
+   */
+  createSectionFromElement(): PageSection {
+    if (this.isPageSection()) {
+      return this.asPageSection();
+    }
+
+    const element = this.asPageElement();
+    // Create a mock section structure from element data
+    // For category components, we need to preserve the element's content in the expected structure
+    return {
+      id: `section-from-${element.id}`,
+      type: element.tag,
+      pageId: 'dynamic',
+      styles: element.styles || {},
+      container: {
+        id: `container-from-${element.id}`,
+        tag: 'div',
+        styles: {},
+        children: [
+          {
+            ...element,
+            // Ensure the content is available at the expected location
+            content: element.content || []
+          }
+        ]
+      }
+    } as PageSection;
   }
 
   // -------- Generic PageSection rendering helpers --------
@@ -644,6 +708,13 @@ export class DynamicElementComponent {
     const section = this.asPageSection();
     const deviceStyles = { ...this.getDeviceStyles(section.styles) };
     delete deviceStyles.className;
+
+    // Remove width-constraining properties that should be on container, not section
+    delete deviceStyles['max-width'];
+    delete deviceStyles['maxWidth'];
+    delete deviceStyles['min-width'];
+    delete deviceStyles['minWidth'];
+
     const inline: any = {};
     Object.keys(deviceStyles).forEach(k => {
       const cssKey = k.includes('-') ? k : k.replace(/([A-Z])/g, '-$1').toLowerCase();
